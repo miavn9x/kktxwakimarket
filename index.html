@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Premium baby diapers and products for your little ones" />
-    <title>KKT x Waki Market</title>
+    <meta name="description" content="Mua bát đĩa trẻ em chuẩn Nhật và tủ 1 khoang hai mặt tại KKT x Waki Market. Sản phẩm an toàn, bền bỉ, thiết kế thông minh cho bé yêu." />
+    <meta name="keywords" content="bát đĩa trẻ em, tủ 1 khoang hai mặt, KKT x Waki Market, dụng cụ ăn uống trẻ em, sản phẩm trẻ em an toàn" />
+    <meta name="robots" content="index, follow" />
     <link rel="icon" href="./Images/waki-market-logo.png" class="w-100" type="image/png" />
     <style>
       /* Mobile Menu Styles */
@@ -900,42 +901,49 @@
     <button id="back-to-top" class="fixed bottom-6 right-6 bg-baby-pink-dark text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300">
       <i class="fas fa-arrow-up"></i>
     </button>
-    <!-- Chat Support Widget -->
-    <div class="fixed bottom-4 sm:bottom-6 left-4 sm:left-6 z-50">
-      <button id="chat-toggle" class="bg-baby-pink-dark text-white w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-lg">
-        <i class="fas fa-comments text-xl sm:text-2xl"></i>
+ <!-- Chat Support Widget -->
+<div class="fixed bottom-4 sm:bottom-6 left-4 sm:left-6 z-50">
+  <button id="chat-toggle" class="bg-baby-pink-dark text-white w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-lg">
+    <i class="fas fa-comments text-xl sm:text-2xl"></i>
+  </button>
+
+  <div id="chat-widget" class="hidden bg-white rounded-lg shadow-xl w-72 sm:w-80 h-auto overflow-hidden">
+    <div class="bg-baby-pink-dark text-white p-3 sm:p-4 flex justify-between items-center">
+      <div class="flex items-center">
+        <i class="fas fa-headset mr-2"></i>
+        <span class="font-bold text-sm sm:text-base">Hỗ trợ trực tuyến</span>
+      </div>
+      <button id="chat-close" class="text-white">
+        <i class="fas fa-times"></i>
       </button>
-      <div id="chat-widget" class="hidden bg-white rounded-lg shadow-xl w-72 sm:w-80 h-auto sm:h-auto overflow-hidden">
-        <div class="bg-baby-pink-dark text-white p-3 sm:p-4 flex justify-between items-center">
-          <div class="flex items-center">
-            <i class="fas fa-headset mr-2"></i>
-            <span class="font-bold text-sm sm:text-base">Hỗ trợ trực tuyến</span>
-          </div>
-          <button id="chat-close" class="text-white">
-            <i class="fas fa-times"></i>
-          </button>
+    </div>
+
+    <div class="p-3 sm:p-4 h-56 sm:h-72 overflow-y-auto custom-scrollbar" id="chat-messages">
+      <!-- Các tin nhắn sẽ được append vào đây -->
+      <div class="flex mb-4">
+        <div class="w-8 h-8 rounded-full bg-baby-pink-light flex items-center justify-center mr-2">
+          <i class="fas fa-user text-baby-pink-dark"></i>
         </div>
-        <div class="p-3 sm:p-4 h-56 sm:h-72 overflow-y-auto custom-scrollbar" id="chat-messages">
-          <div class="flex mb-4">
-            <div class="w-8 h-8 rounded-full bg-baby-pink-light flex items-center justify-center mr-2">
-              <i class="fas fa-user text-baby-pink-dark"></i>
-            </div>
-            <div class="bg-gray-100 rounded-lg p-2 sm:p-3 max-w-[80%]">
-              <p class="text-gray-700 text-xs sm:text-sm">Xin chào! Tôi có thể giúp gì cho bạn?</p>
-              <span class="text-xs text-gray-500">10:00</span>
-            </div>
-          </div>
-        </div>
-        <div class="border-t border-gray-200 p-3 sm:p-4">
-          <div class="flex">
-            <input type="text" placeholder="Nhập tin nhắn..." class="flex-grow px-3 sm:px-4 py-2 rounded-l-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-baby-pink-dark text-xs sm:text-sm" />
-            <button class="bg-baby-pink-dark text-white px-3 sm:px-4 py-2 rounded-r-full">
-              <i class="fas fa-paper-plane text-xs sm:text-sm"></i>
-            </button>
-          </div>
+        <div class="bg-gray-100 rounded-lg p-2 sm:p-3 max-w-[80%]">
+          <p class="text-gray-700 text-xs sm:text-sm">Xin chào! Tôi có thể giúp gì cho bạn?</p>
+          <span class="text-xs text-gray-500">10:00</span>
         </div>
       </div>
     </div>
+
+    <div class="border-t border-gray-200 p-3 sm:p-4 flex">
+      <input
+        type="text"
+        id="chat-input"
+        placeholder="Nhập tin nhắn..."
+        class="flex-grow px-3 sm:px-4 py-2 rounded-l-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-baby-pink-dark text-xs sm:text-sm"
+      />
+      <button id="chat-send" class="bg-baby-pink-dark text-white px-3 sm:px-4 py-2 rounded-r-full">
+        <i class="fas fa-paper-plane text-xs sm:text-sm"></i>
+      </button>
+    </div>
+  </div>
+</div>
     <!-- Popup Newsletter -->
     <div id="popup-newsletter" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
       <div class="bg-white rounded-lg shadow-xl max-w-md w-full relative">
@@ -1055,16 +1063,85 @@
           icon.classList.toggle('rotate-180');
         });
       });
-      // Chat widget
-      const chatToggle = document.getElementById('chat-toggle');
-      const chatWidget = document.getElementById('chat-widget');
-      const chatClose = document.getElementById('chat-close');
-      chatToggle.addEventListener('click', () => {
-        chatWidget.classList.toggle('hidden');
-      });
-      chatClose.addEventListener('click', () => {
-        chatWidget.classList.add('hidden');
-      });
+       // DOM elements
+  const chatToggle   = document.getElementById('chat-toggle');
+  const chatWidget   = document.getElementById('chat-widget');
+  const chatClose    = document.getElementById('chat-close');
+  const chatMessages = document.getElementById('chat-messages');
+  const chatInput    = document.getElementById('chat-input');
+  const chatSend     = document.getElementById('chat-send');
+
+  // Mở/đóng widget
+  chatToggle.addEventListener('click', () => {
+    chatWidget.classList.toggle('hidden');
+    if (!chatWidget.classList.contains('hidden')) {
+      chatInput.focus();
+    }
+  });
+
+  chatClose.addEventListener('click', () => {
+    chatWidget.classList.add('hidden');
+  });
+
+  // Gửi tin nhắn khi bấm nút hoặc Enter
+  chatSend.addEventListener('click', sendMessage);
+  chatInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      sendMessage();
+      e.preventDefault();
+    }
+  });
+
+  function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    // Tạo khung tin nhắn user
+    const wrapper = document.createElement('div');
+    wrapper.classList.add('flex', 'mb-4');
+
+    const avatar = document.createElement('div');
+    avatar.className = 'w-8 h-8 rounded-full bg-baby-pink-dark flex items-center justify-center mr-2';
+    avatar.innerHTML = '<i class="fas fa-user text-white"></i>';
+
+    const bubble = document.createElement('div');
+    bubble.className = 'bg-baby-pink-light rounded-lg p-2 sm:p-3 max-w-[80%]';
+    bubble.innerHTML = `<p class="text-gray-800 text-xs sm:text-sm">${escapeHtml(text)}</p>
+                        <span class="text-xs text-gray-500">${getCurrentTime()}</span>`;
+
+    wrapper.appendChild(avatar);
+    wrapper.appendChild(bubble);
+    chatMessages.appendChild(wrapper);
+
+    chatInput.value = '';
+    scrollToBottom();
+
+    // TODO: Gửi text lên server hoặc xử lý bot ở đây
+  }
+
+  // Đảm bảo cuộn xuống dưới mỗi khi có tin nhắn mới
+  function scrollToBottom() {
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  // Lấy thời gian hiện tại định dạng HH:MM
+  function getCurrentTime() {
+    const now = new Date();
+    const h = now.getHours().toString().padStart(2, '0');
+    const m = now.getMinutes().toString().padStart(2, '0');
+    return `${h}:${m}`;
+  }
+
+  // Tránh XSS
+  function escapeHtml(str) {
+    return str.replace(/[&<>"']/g, (tag) => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    }[tag]));
+  }
       // Popup Newsletter
       const popupNewsletter = document.getElementById('popup-newsletter');
       const popupClose = document.getElementById('popup-close');
