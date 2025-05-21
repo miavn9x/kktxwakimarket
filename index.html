@@ -1672,65 +1672,57 @@
         "'": '&#39;'
       }[tag]));
     }
-    document.addEventListener("DOMContentLoaded", () => {
-  // Popup Newsletter
-  const popupNewsletter = document.getElementById('popup-newsletter');
-  const popupClose = document.getElementById('popup-close');
-
-  // Show popup after 5 seconds if not previously closed
-  setTimeout(() => {
-    if (!localStorage.getItem('popup-closed')) {
-      popupNewsletter.classList.remove('hidden');
-    }
-  }, 5000);
-
-  // Close popup and optionally set localStorage if checkbox is checked
-  popupClose.addEventListener('click', () => {
-    popupNewsletter.classList.add('hidden');
-    const checkbox = popupNewsletter.querySelector('input[type="checkbox"]');
-    if (checkbox && checkbox.checked) {
-      localStorage.setItem('popup-closed', 'true');
-    }
-  });
-
-  // Form submission
-  const forms = document.querySelectorAll("form[data-form]");
-  forms.forEach((form) => {
-    const successMsgId = form.getAttribute("data-success");
-    const successMsg = document.getElementById(successMsgId);
-
-    form.addEventListener("submit", async function (e) {
-      e.preventDefault();
-
-      const formData = new FormData(form);
-
-      try {
-        const res = await fetch("https://formsubmit.co/ajax/contact.wakimarket@gmail.com", {
-          method: "POST",
-          headers: {
-            'Accept': 'application/json'
-          },
-          body: formData
-        });
-
-        if (res.ok) {
-          form.reset();
-          if (successMsg) successMsg.classList.remove("hidden");
-          
-          // Check if form is inside popupNewsletter and close it
-          if (popupNewsletter && form.closest('#popup-newsletter')) {
-            popupNewsletter.classList.add('hidden');
-            localStorage.setItem('popup-closed', 'true');
-          }
-        } else {
-          alert("Đã xảy ra lỗi khi gửi. Vui lòng thử lại.");
-        }
-      } catch (err) {
-        alert("Không thể gửi. Vui lòng kiểm tra kết nối mạng.");
+    // Popup Newsletter
+    const popupNewsletter = document.getElementById('popup-newsletter');
+    const popupClose = document.getElementById('popup-close');
+    setTimeout(() => {
+      if (!localStorage.getItem('popup-closed')) {
+        popupNewsletter.classList.remove('hidden');
+      }
+    }, 5000);
+    popupClose.addEventListener('click', () => {
+      popupNewsletter.classList.add('hidden');
+      const checkbox = popupNewsletter.querySelector('input[type="checkbox"]');
+      if (checkbox.checked) {
+        localStorage.setItem('popup-closed', 'true');
       }
     });
-  });
-});
+    
+
+    // Gửi email 
+    document.addEventListener("DOMContentLoaded", () => {
+      const forms = document.querySelectorAll("form[data-form]");
+
+      forms.forEach((form) => {
+        const successMsgId = form.getAttribute("data-success");
+        const successMsg = document.getElementById(successMsgId);
+
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const formData = new FormData(form);
+
+          try {
+            const res = await fetch("https://formsubmit.co/ajax/contact.wakimarket@gmail.com", {
+              method: "POST",
+              headers: {
+                'Accept': 'application/json'
+              },
+              body: formData
+            });
+
+            if (res.ok) {
+              form.reset();
+              if (successMsg) successMsg.classList.remove("hidden");
+            } else {
+              alert("Đã xảy ra lỗi khi gửi. Vui lòng thử lại.");
+            }
+          } catch (err) {
+            alert("Không thể gửi. Vui lòng kiểm tra kết nối mạng.");
+          }
+        });
+      });
+    });
   </script>
 </body>
 
