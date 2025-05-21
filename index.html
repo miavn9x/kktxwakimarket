@@ -939,11 +939,11 @@
           </div>
         </div>
       </div>
-      <div class="text-center mt-10">
+      <!-- <div class="text-center mt-10">
         <a href="#"
           class="inline-block bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-full transition">Xem
           tất cả bài viết</a>
-      </div>
+      </div> -->
     </div>
   </section>
 
@@ -1672,84 +1672,65 @@
         "'": '&#39;'
       }[tag]));
     }
-    // Popup Newsletter
-    const popupNewsletter = document.getElementById('popup-newsletter');
-    const popupClose = document.getElementById('popup-close');
-    setTimeout(() => {
-      if (!localStorage.getItem('popup-closed')) {
-        popupNewsletter.classList.remove('hidden');
-      }
-    }, 5000);
-    popupClose.addEventListener('click', () => {
-      popupNewsletter.classList.add('hidden');
-      const checkbox = popupNewsletter.querySelector('input[type="checkbox"]');
-      if (checkbox.checked) {
-        localStorage.setItem('popup-closed', 'true');
-      }
-    });
-    //     // Gửi email
-    //     document.getElementById('contactForm').addEventListener('submit', function (e) {
-    //       e.preventDefault(); // Ngăn reload trang
-
-    //       // Lấy giá trị từ form
-    //       const name = document.getElementById('name').value.trim();
-    //       const email = document.getElementById('email').value.trim();
-    //       const phone = document.getElementById('phone').value.trim();
-    //       const subject = document.getElementById('subject').value.trim();
-    //       const message = document.getElementById('message').value.trim();
-
-    //       // Soạn nội dung email
-    //       const body = `
-    //           Họ và tên: ${name}
-    // Email: ${email}
-    // Số điện thoại: ${phone}
-    // -------------------------------
-    // ${message}
-    //         `.trim();
-
-    //       // Tạo mailto link
-    //       const mailtoLink = `mailto:contact.wakimarket@gmail.com?subject=${encodeURIComponent(
-    //         subject,
-    //       )}&body=${encodeURIComponent(body)}`;
-
-    //       // Mở ứng dụng email
-    //       window.location.href = mailtoLink;
-    //     });
-
-    // Gửi email 
     document.addEventListener("DOMContentLoaded", () => {
-      const forms = document.querySelectorAll("form[data-form]");
+  // Popup Newsletter
+  const popupNewsletter = document.getElementById('popup-newsletter');
+  const popupClose = document.getElementById('popup-close');
 
-      forms.forEach((form) => {
-        const successMsgId = form.getAttribute("data-success");
-        const successMsg = document.getElementById(successMsgId);
+  // Show popup after 5 seconds if not previously closed
+  setTimeout(() => {
+    if (!localStorage.getItem('popup-closed')) {
+      popupNewsletter.classList.remove('hidden');
+    }
+  }, 5000);
 
-        form.addEventListener("submit", async function (e) {
-          e.preventDefault();
+  // Close popup and optionally set localStorage if checkbox is checked
+  popupClose.addEventListener('click', () => {
+    popupNewsletter.classList.add('hidden');
+    const checkbox = popupNewsletter.querySelector('input[type="checkbox"]');
+    if (checkbox && checkbox.checked) {
+      localStorage.setItem('popup-closed', 'true');
+    }
+  });
 
-          const formData = new FormData(form);
+  // Form submission
+  const forms = document.querySelectorAll("form[data-form]");
+  forms.forEach((form) => {
+    const successMsgId = form.getAttribute("data-success");
+    const successMsg = document.getElementById(successMsgId);
 
-          try {
-            const res = await fetch("https://formsubmit.co/ajax/miavn9x@gmail.com", {
-              method: "POST",
-              headers: {
-                'Accept': 'application/json'
-              },
-              body: formData
-            });
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
 
-            if (res.ok) {
-              form.reset();
-              if (successMsg) successMsg.classList.remove("hidden");
-            } else {
-              alert("Đã xảy ra lỗi khi gửi. Vui lòng thử lại.");
-            }
-          } catch (err) {
-            alert("Không thể gửi. Vui lòng kiểm tra kết nối mạng.");
-          }
+      const formData = new FormData(form);
+
+      try {
+        const res = await fetch("https://formsubmit.co/ajax/miavn9x@gmail.com", {
+          method: "POST",
+          headers: {
+            'Accept': 'application/json'
+          },
+          body: formData
         });
-      });
+
+        if (res.ok) {
+          form.reset();
+          if (successMsg) successMsg.classList.remove("hidden");
+          
+          // Check if form is inside popupNewsletter and close it
+          if (popupNewsletter && form.closest('#popup-newsletter')) {
+            popupNewsletter.classList.add('hidden');
+            localStorage.setItem('popup-closed', 'true');
+          }
+        } else {
+          alert("Đã xảy ra lỗi khi gửi. Vui lòng thử lại.");
+        }
+      } catch (err) {
+        alert("Không thể gửi. Vui lòng kiểm tra kết nối mạng.");
+      }
     });
+  });
+});
   </script>
 </body>
 
