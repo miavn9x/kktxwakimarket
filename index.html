@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="overflow-x-hidden">
+<html lang="vi" class="overflow-x-hidden">
 
 <head>
   <meta charset="UTF-8" />
@@ -9,34 +9,82 @@
   <meta name="keywords"
     content="bát đĩa trẻ em, tủ 1 khoang hai mặt, KKT x Waki Market, dụng cụ ăn uống trẻ em, sản phẩm trẻ em an toàn" />
   <meta name="robots" content="index, follow" />
-  <link rel="icon" href="./Images/waki-market-logo.png" class="w-100" type="image/png" />
+  <meta name="author" content="KKT x Waki Market" />
+  <meta property="og:title" content="KKT x Waki Market - Bát đĩa trẻ em chuẩn Nhật" />
+  <meta property="og:description"
+    content="Mua bát đĩa trẻ em chuẩn Nhật và tủ 1 khoang hai mặt tại KKT x Waki Market. Sản phẩm an toàn, bền bỉ, thiết kế thông minh cho bé yêu." />
+  <meta property="og:type" content="website" />
+  <title>KKT x Waki Market - Bát đĩa trẻ em chuẩn Nhật</title>
+  <link rel="icon" href="./Images/waki-market-logo.png" type="image/png" />
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+  <link rel="preconnect" href="https://unpkg.com" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
   <style>
+    /* Base Styles */
+    :root {
+      --primary-color: #0078A8;
+      --primary-light: #C3EEFF;
+      --primary-dark: #005F86;
+      --animation-timing: 0.5s;
+      --animation-easing: cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
     /* Mobile Menu Styles */
     #mobile-menu {
       max-width: 300px;
-      /* Giới hạn chiều rộng tối đa */
+      transform: translateX(-100%);
+      transition: transform 0.4s var(--animation-easing);
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+      will-change: transform;
     }
 
     #mobile-menu.active {
       transform: translateX(0);
-      /* Hiển thị menu khi active */
+      box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
+    }
+
+    #mobile-menu-overlay {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s var(--animation-easing), visibility 0.4s var(--animation-easing);
+      backdrop-filter: blur(3px);
+      will-change: opacity;
     }
 
     #mobile-menu-overlay.active {
-      display: block;
-      /* Hiển thị overlay khi menu mở */
+      opacity: 1;
+      visibility: visible;
     }
 
     /* Swiper styles */
     .swiper {
       width: 100%;
       padding-bottom: 40px;
+      overflow: visible;
     }
 
     .swiper-slide {
       display: flex;
       justify-content: center;
       align-items: center;
+      transition: transform 0.3s var(--animation-easing), opacity 0.3s var(--animation-easing);
+      opacity: 1;
+      /* Đảm bảo tất cả slide đều rõ nét */
+      transform: scale(1);
+      /* Giữ kích thước gốc cho tất cả slide */
+    }
+
+    .swiper-slide-active {
+      opacity: 1;
+      transform: scale(1);
     }
 
     .swiper-button-next,
@@ -44,56 +92,386 @@
       color: var(--primary-color);
       background: rgba(255, 255, 255, 0.8);
       border-radius: 50%;
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.3s ease;
+      transition: all 0.3s var(--animation-easing);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
     .swiper-button-next:hover,
     .swiper-button-prev:hover {
       background: var(--primary-color);
       color: #fff;
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      font-size: 18px;
     }
 
     .swiper-pagination-bullet {
       background: var(--primary-color);
       opacity: 0.4;
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
+      transition: all 0.3s var(--animation-easing);
     }
 
     .swiper-pagination-bullet-active {
       background: var(--primary-color);
       opacity: 1;
-    }
-
-    @media (max-width: 767px) {
-
-      .swiper-button-next,
-      .swiper-button-prev {
-        display: none;
-        /* Ẩn nút điều hướng trên mobile */
-      }
-
-      .swiper-pagination {
-        bottom: 10px !important;
-      }
+      width: 30px;
+      border-radius: 5px;
     }
 
     /* Hide navigation buttons on all devices */
     .swiper-button-next,
     .swiper-button-prev {
       display: none;
-      /* Ẩn nút điều hướng trên mọi thiết bị */
     }
 
-    :root {
-      --primary-color: #0078A8;
-      --primary-light: #C3EEFF;
-      --primary-dark: #005F86;
+    @media (min-width: 768px) {
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        display: flex;
+      }
+    }
+
+    nav {
+      gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        justify-content: center;
+      }
+    }
+
+    .text-baby-pink-dark {
+      background: linear-gradient(90deg, #ff002b, #F8D800);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .testimonial-card {
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s var(--animation-easing), box-shadow 0.3s var(--animation-easing);
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 120, 168, 0.1);
+    }
+
+    /* Accessibility focus styles */
+    a:focus,
+    button:focus,
+    input:focus,
+    textarea:focus {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
+    }
+
+    /* Custom scrollbar */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: var(--primary-color);
+      border-radius: 3px;
+    }
+
+    /* Reduce motion for users who prefer it */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* Enhanced Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s var(--animation-easing), transform 0.6s var(--animation-easing);
+    }
+
+    .fade-in.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .scale-in {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s var(--animation-easing), transform 0.6s var(--animation-easing);
+    }
+
+    .scale-in.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .slide-in-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.6s var(--animation-easing), transform 0.6s var(--animation-easing);
+    }
+
+    .slide-in-left.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .slide-in-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.6s var(--animation-easing), transform 0.6s var(--animation-easing);
+    }
+
+    .slide-in-right.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Staggered animations */
+    .stagger-item {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    /* Product Card Animation */
+    .product-card {
+      transition: transform 0.4s var(--animation-easing), box-shadow 0.4s var(--animation-easing);
+      will-change: transform, box-shadow;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 120, 168, 0.1);
+    }
+
+    .product-card .product-image {
+      transition: transform 0.5s var(--animation-easing);
+      will-change: transform;
+    }
+
+    .product-card:hover .product-image {
+      transform: scale(1.05);
+    }
+
+    .product-card .add-to-cart {
+      transition: transform 0.3s var(--animation-easing), background-color 0.3s var(--animation-easing);
+    }
+
+    .product-card:hover .add-to-cart {
+      transform: rotate(360deg);
+    }
+
+    /* FAQ Animation */
+    .faq-toggle i {
+      transition: transform 0.4s var(--animation-easing);
+    }
+
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s var(--animation-easing);
+    }
+
+    .faq-content.active {
+      max-height: 300px;
+    }
+
+    /* Button Animations */
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s var(--animation-easing);
+      z-index: 1;
+    }
+
+    .btn-primary:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: var(--primary-dark);
+      transition: width 0.3s var(--animation-easing);
+      z-index: -1;
+    }
+
+    .btn-primary:hover:before {
+      width: 100%;
+    }
+
+    /* Floating Animation */
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    .float {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Pulse Animation */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 120, 168, 0.7);
+      }
+
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(0, 120, 168, 0);
+      }
+
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 120, 168, 0);
+      }
+    }
+
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+
+    /* Back to top button animation */
+    #back-to-top {
+      transition: all 0.4s var(--animation-easing);
+    }
+
+    #back-to-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Chat widget animation */
+    #chat-toggle {
+      transition: transform 0.3s var(--animation-easing), background-color 0.3s var(--animation-easing);
+    }
+
+    #chat-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    #chat-widget {
+      transform: translateY(20px);
+      opacity: 0;
+      transition: transform 0.4s var(--animation-easing), opacity 0.4s var(--animation-easing), visibility 0.4s var(--animation-easing);
+      visibility: hidden;
+    }
+
+    #chat-widget.active {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Popup animation */
+    #popup-newsletter {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s var(--animation-easing), visibility 0.5s var(--animation-easing);
+    }
+
+    #popup-newsletter.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #popup-newsletter .popup-content {
+      transform: scale(0.8);
+      opacity: 0;
+      transition: transform 0.5s var(--animation-easing), opacity 0.5s var(--animation-easing);
+    }
+
+    #popup-newsletter.active .popup-content {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    /* Shimmer effect for buttons */
+    .btn-shimmer {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-shimmer::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to right,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.3) 50%,
+          rgba(255, 255, 255, 0) 100%);
+      transform: rotate(30deg);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        transform: translateX(-100%) rotate(30deg);
+      }
+
+      100% {
+        transform: translateX(100%) rotate(30deg);
+      }
+    }
+
+    /* Loading skeleton animation */
+    @keyframes skeleton-loading {
+      0% {
+        background-position: -200px 0;
+      }
+
+      100% {
+        background-position: calc(200px + 100%) 0;
+      }
+    }
+
+    .skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200px 100%;
+      animation: skeleton-loading 1.5s infinite;
+    }
+
+    /* Parallax effect */
+    .parallax {
+      transition: transform 0.5s var(--animation-easing);
+      will-change: transform;
     }
   </style>
   <!-- Tailwind CSS -->
@@ -106,6 +484,7 @@
             'primary': '#0078A8',
             'primary-light': '#C3EEFF',
             'primary-dark': '#005F86',
+            'baby-pink-dark': '#F6416C',
           },
         },
       },
@@ -113,1617 +492,2131 @@
   </script>
   <!-- Swiper JS -->
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <!-- AOS Animation -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <!-- GSAP for advanced animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
 </head>
 
-<body class="bg-primary-light overflow-x-hidden">
-  <!-- Header -->
-  <header class="bg-white shadow-md sticky top-0 z-50">
-    <div class="container mx-auto px-4">
-      <div class="flex justify-between items-center py-4">
-        <div class="flex items-center space-x-4">
-          <a href="#" class="flex items-center">
-            <img src="./Images/kkt-logo.jpg" alt="Logo KKT" class="w-20 h-20 object-contain" />
-            <img src="./Images/waki-market-logo.png" alt="Logo Waki Market" class="w-20 h-20 object-contain" />
-          </a>
-        </div>
-        <!-- Search Bar -->
-        <div class="hidden md:flex flex-1 max-w-xl mx-8">
-          <div class="relative w-full">
-            <input type="text" placeholder="Tìm kiếm sản phẩm..."
-              class="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary" />
-            <button class="absolute right-0 top-0 h-full px-4 text-primary">
-              <i class="fas fa-search"></i>
-            </button>
+<body>
+  <div class="max-w-[100vw] overflow-x-hidden">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <div class="flex items-center space-x-4 mr-4">
+            <a href="#" class="flex items-center" aria-label="KKT x Waki Market Home">
+              <img src="./Images/KKT 2.ai.png" alt="Logo KKT" class="w-20 h-20 object-contain" width="80" height="80" />
+              <img src="./Images/1waki-market-logo.png" alt="Logo Waki Market" class="w-20 h-20 object-contain"
+                width="80" height="80" />
+            </a>
           </div>
-        </div>
-        <nav class="hidden md:flex space-x-8">
-          <a href="#home" class="text-gray-700 hover:text-primary transition">Trang chủ</a>
-          <a href="#products" class="text-gray-700 hover:text-primary transition">Sản phẩm</a>
-          <a href="#about" class="text-gray-700 hover:text-primary transition">Về chúng tôi</a>
-          <a href="#blog" class="text-gray-700 hover:text-primary transition">Blog</a>
-          <a href="#contact" class="text-gray-700 hover:text-primary transition">Liên hệ</a>
-        </nav>
-        <div class="flex items-center space-x-4">
-          <button class="md:hidden text-gray-700" id="mobile-menu-button">
-            <i class="fas fa-bars text-2xl"></i>
-          </button>
-        </div>
-      </div>
-      <!-- Mobile Menu -->
-      <div
-        class="md:hidden fixed inset-y-0 left-0 w-3/4 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out z-50"
-        id="mobile-menu">
-        <div class="flex flex-col space-y-4 py-4 h-full">
-          <div class="flex justify-between items-center px-4 pb-4">
-            <img src="./Images/kkt-logo.jpg" alt="Logo KKT" class="w-20 h-20 object-contain" />
-            <img src="./Images/waki-market-logo.png" alt="Logo Waki Market" class="w-20 h-20 object-contain" />
-            <button class="text-gray-700" id="mobile-menu-close">
-              <i class="fas fa-times text-2xl"></i>
-            </button>
+
+          <!-- Search Bar -->
+          <div class="hidden md:flex flex-1 space-x-8 min-w-[200px] pl-8">
+            <div class="relative w-full">
+              <input type="text" placeholder="Tìm kiếm sản phẩm..." aria-label="Tìm kiếm sản phẩm"
+                class="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary" />
+              <button class="absolute right-0 top-0 h-full px-4 text-primary" aria-label="Tìm kiếm">
+                <i class="fas fa-search" aria-hidden="true"></i>
+              </button>
+            </div>
           </div>
-          <div class="px-4 pb-4">
-            <input type="text" placeholder="Tìm kiếm sản phẩm..."
-              class="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary" />
-          </div>
-          <a href="#home" class="text-gray-700 hover:text-primary transition px-4">Trang chủ</a>
-          <a href="#products" class="text-gray-700 hover:text-primary transition px-4">Sản phẩm</a>
-          <a href="#about" class="text-gray-700 hover:text-primary transition px-4">Về chúng tôi</a>
-          <a href="#blog" class="text-gray-700 hover:text-primary transition px-4">Blog</a>
-          <a href="#contact" class="text-gray-700 hover:text-primary transition px-4">Liên hệ</a>
-        </div>
-      </div>
-      <!-- Overlay -->
-      <div class="fixed inset-0 bg-black bg-opacity-50 hidden" id="mobile-menu-overlay"></div>
-    </div>
-  </header>
-  <!-- Hero Banner -->
-  <section id="home" class="relative bg-gradient-to-r from-primary-light to-white py-16">
-    <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 mb-8 md:mb-0" data-aos="fade-right">
-          <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-            Chăm con chuẩn Nhật với
-            <span class="text-primary">sản phẩm bát đĩa chất lượng cao đến từ Nhật Bản</span>
-          </h1>
-          <p class="text-gray-600 mb-8 text-lg">
-            Bát đĩa KKT được sản xuất theo tiêu chuẩn nghiêm ngặt tại Nhật, an toàn cho bé, bền bỉ với thời gian, đồng
-            hành cùng con trong từng bữa ăn đầu đời.
-          </p>
-          <div class="flex space-x-4">
+          <nav class="hidden md:flex flex-wrap justify-center space-x-8 pl-4" aria-label="Menu chính">
+            <a href="#home"
+              class="text-gray-700 hover:text-primary transition-colors duration-300 relative nav-link">Trang chủ</a>
             <a href="#products"
-              class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-full transition">Mua
-              ngay</a>
+              class="text-gray-700 hover:text-primary transition-colors duration-300 relative nav-link">Sản phẩm</a>
             <a href="#about"
-              class="border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 px-6 rounded-full transition">Tìm
-              hiểu thêm</a>
-          </div>
-        </div>
-        <div class="md:w-1/2" data-aos="fade-left">
-          <img src="./Images/KKT booth banner-04.png" alt="Bé sử dụng bát đĩa KKT"
-            class="rounded-lg shadow-xl w-full h-auto" />
-        </div>
-      </div>
-    </div>
-    <!-- Decorative elements -->
-    <div class="absolute top-10 right-10 opacity-20">
-      <i class="fas fa-baby text-6xl text-primary"></i>
-    </div>
-    <div class="absolute bottom-10 left-10 opacity-20">
-      <i class="fas fa-heart text-6xl text-primary"></i>
-    </div>
-  </section>
-  <!-- Shipping Policy Banner -->
-  <section class="py-8 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div class="flex items-center space-x-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="text-primary text-3xl">
-            <i class="fas fa-truck"></i>
-          </div>
-          <div>
-            <h3 class="font-bold">An toàn tuyệt đối</h3>
-            <p class="text-sm text-gray-600">Không giải phóng cadmium & chì, đạt kiểm định nghiêm ngặt từ Nhật Bản</p>
-          </div>
-        </div>
-        <div class="flex items-center space-x-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="text-primary text-3xl">
-            <i class="fas fa-sync-alt"></i>
-          </div>
-          <div>
-            <h3 class="font-bold">Đóng gói kỹ lưỡng</h3>
-            <p class="text-sm text-gray-600">Đảm bảo sản phẩm nguyên vẹn khi khách nhận hàng</p>
-          </div>
-        </div>
-        <div class="flex items-center space-x-4" data-aos="fade-up" data-aos-delay="300">
-          <div class="text-primary text-3xl">
-            <i class="fas fa-shield-alt"></i>
-          </div>
-          <div>
-            <h3 class="font-bold">Sản phẩm chính hãng</h3>
-            <p class="text-sm text-gray-600">100% sản phẩm an toàn</p>
-          </div>
-        </div>
-        <div class="flex items-center space-x-4" data-aos="fade-up" data-aos-delay="400">
-          <div class="text-primary text-3xl">
-            <i class="fas fa-headset"></i>
-          </div>
-          <div>
-            <h3 class="font-bold">Hỗ trợ 24/7</h3>
-            <p class="text-sm text-gray-600">Tư vấn trực tuyến</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Features -->
-  <section class="py-16 bg-primary-light">
-    <div class="container mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white p-8 rounded-lg text-center shadow-md" data-aos="fade-up">
-          <div class="bg-primary-light w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
-            <i class="fas fa-leaf text-2xl text-primary"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-2">Độ bền vượt trội</h3>
-          <p class="text-gray-600">Chịu lực đến 230MPa – bền gấp 3–4 lần bát đĩa thường, không lo nứt vỡ khi va chạm.
-          </p>
-        </div>
-        <div class="bg-white p-8 rounded-lg text-center shadow-md" data-aos="fade-up" data-aos-delay="100">
-          <div class="bg-primary-light w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
-            <i class="fas fa-tint text-2xl text-primary"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-2">Khả năng chịu nhiệt tốt</h3>
-          <p class="text-gray-600">An toàn trong lò vi sóng, máy rửa bát với khả năng chịu nhiệt lên tới 1000°C.</p>
-        </div>
-        <div class="bg-white p-8 rounded-lg text-center shadow-md" data-aos="fade-up" data-aos-delay="200">
-          <div class="bg-primary-light w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
-            <i class="fas fa-shield-alt text-2xl text-primary"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-2">Thiết kế thông minh & tinh tế</h3>
-          <p class="text-gray-600">Đáy có ren chống trượt, dễ cầm nắm; bề mặt trắng sáng, dễ lau chùi và giữ được vẻ đẹp
-            lâu dài.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Product Categories -->
-<section id="products" class="py-16 bg-white">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold mb-4" data-aos="fade-up">Danh mục sản phẩm</h2>
-      <p class="text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Chúng tôi cung cấp đa dạng
-        các sản phẩm bát đĩa, dụng cụ ăn uống cho bé yêu với chất lượng tốt nhất</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      <!-- Item 1 -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition relative" data-aos="fade-up">
-        <div class="absolute top-3 right-3 z-10">
-          <span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
-        </div>
-        <div class="bg-primary-light p-4 flex items-center justify-center h-56">
-          <img src="./Images/bat-tra-su-tu.jpg" alt="Bát trà sư tử" class="h-full w-full object-contain" />
-        </div>
-        <div class="p-4">
-          <div class="flex text-yellow-400 mb-2">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <span class="text-gray-500 ml-1 text-sm">(8)</span>
-          </div>
-          <h3 class="font-bold text-lg mb-1">Bát trà sư tử</h3>
-          <p class="text-gray-600 text-sm mb-3">Chất liệu sứ cao cấp - An toàn cho bé</p>
-          <div class="flex justify-between items-center">
-            <p class="text-primary font-semibold">150.000đ</p>
-            <a href="#contact">
-              <button class="bg-primary hover:bg-primary-dark text-white rounded-full w-10 h-10 flex items-center justify-center transition">
-                <i class="fas fa-shopping-cart"></i>
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 2 -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition relative" data-aos="fade-up">
-        <div class="absolute top-3 right-3 z-10">
-          <span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
-        </div>
-        <div class="bg-primary-light p-4 flex items-center justify-center h-56">
-          <img src="./Images/bat-an-com-su-tu.png" alt="Bát ăn cơm sư tử" class="h-full w-full object-contain" />
-        </div>
-        <div class="p-4">
-          <div class="flex text-yellow-400 mb-2">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-            <span class="text-gray-500 ml-1 text-sm">(6)</span>
-          </div>
-          <h3 class="font-bold text-lg mb-1">Bát ăn cơm sư tử</h3>
-          <p class="text-gray-600 text-sm mb-3">Thiết kế chống trượt - Dễ cầm nắm</p>
-          <div class="flex justify-between items-center">
-            <p class="text-primary font-semibold">200.000đ</p>
-            <a href="#contact">
-              <button class="bg-primary hover:bg-primary-dark text-white rounded-full w-10 h-10 flex items-center justify-center transition">
-                <i class="fas fa-shopping-cart"></i>
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 3 -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition relative" data-aos="fade-up">
-        <div class="bg-primary-light p-4 flex items-center justify-center h-56">
-          <img src="./Images/dia-trai-cay-su-tu.jpg" alt="Đĩa trái cây sư tử" class="h-full w-full object-contain" />
-        </div>
-        <div class="p-4">
-          <div class="flex text-yellow-400 mb-2">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-            <span class="text-gray-500 ml-1 text-sm">(12)</span>
-          </div>
-          <h3 class="font-bold text-lg mb-1">Đĩa trái cây sư tử</h3>
-          <p class="text-gray-600 text-sm mb-3">Họa tiết dễ thương - Kích thích bé ăn ngon</p>
-          <div class="flex justify-between items-center">
-            <p class="text-primary font-semibold">157.000đ</p>
-            <a href="#contact">
-              <button class="bg-primary hover:bg-primary-dark text-white rounded-full w-10 h-10 flex items-center justify-center transition">
-                <i class="fas fa-shopping-cart"></i>
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 4 -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition relative" data-aos="fade-up">
-        <div class="absolute top-3 right-3 z-10">
-          <span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
-        </div>
-        <div class="bg-primary-light p-4 flex items-center justify-center h-56">
-          <img src="./Images/dia-nho-su-tu.png" alt="Đĩa nhỏ sư tử" class="h-full w-full object-contain" />
-        </div>
-        <div class="p-4">
-          <div class="flex text-yellow-400 mb-2">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="far fa-star"></i>
-            <span class="text-gray-500 ml-1 text-sm">(5)</span>
-          </div>
-          <h3 class="font-bold text-lg mb-1">Đĩa nhỏ sư tử</h3>
-          <p class="text-gray-600 text-sm mb-3">Kích thước vừa phải - Phù hợp ăn dặm</p>
-          <div class="flex justify-between items-center">
-            <p class="text-primary font-semibold">135.000đ</p>
-            <a href="#contact">
-              <button class="bg-primary hover:bg-primary-dark text-white rounded-full w-10 h-10 flex items-center justify-center transition">
-                <i class="fas fa-shopping-cart"></i>
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 5 -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition relative" data-aos="fade-up">
-        <div class="bg-primary-light p-4 flex items-center justify-center h-56">
-          <img src="./Images/coc-nho-su-tu.jpg" alt="Cốc nhỏ sư tử" class="h-full w-full object-contain" />
-        </div>
-        <div class="p-4">
-          <div class="flex text-yellow-400 mb-2">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <span class="text-gray-500 ml-1 text-sm">(9)</span>
-          </div>
-          <h3 class="font-bold text-lg mb-1">Cốc nhỏ sư tử</h3>
-          <p class="text-gray-600 text-sm mb-3">Dễ cầm nắm - Không đổ tràn</p>
-          <div class="flex justify-between items-center">
-            <p class="text-primary font-semibold">153.000đ</p>
-            <a href="#contact">
-              <button class="bg-primary hover:bg-primary-dark text-white rounded-full w-10 h-10 flex items-center justify-center transition">
-                <i class="fas fa-shopping-cart"></i>
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 6 -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition relative" data-aos="fade-up">
-        <div class="absolute top-3 right-3 z-10">
-          <span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
-        </div>
-        <div class="bg-primary-light p-4 flex items-center justify-center h-56">
-          <img src="./Images/bat-tra-con-voi.jpg" alt="Bát trà con voi" class="h-full w-full object-contain" />
-        </div>
-        <div class="p-4">
-          <div class="flex text-yellow-400 mb-2">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-            <span class="text-gray-500 ml-1 text-sm">(7)</span>
-          </div>
-          <h3 class="font-bold text-lg mb-1">Bát trà con voi</h3>
-          <p class="text-gray-600 text-sm mb-3">Chất liệu sứ cao cấp - An toàn cho bé</p>
-          <div class="flex justify-between items-center">
-            <p class="text-primary font-semibold">150.000đ</p>
-            <a href="#contact">
-              <button class="bg-primary hover:bg-primary-dark text-white rounded-full w-10 h-10 flex items-center justify-center transition">
-                <i class="fas fa-shopping-cart"></i>
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 7 -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition relative" data-aos="fade-up">
-        <div class="bg-primary-light p-4 flex items-center justify-center h-56">
-          <img src="./Images/bat-an-com-con-voi.jpg" alt="Bát ăn cơm con voi" class="h-full w-full object-contain" />
-        </div>
-        <div class="p-4">
-          <div class="flex text-yellow-400 mb-2">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <span class="text-gray-500 ml-1 text-sm">(11)</span>
-          </div>
-          <h3 class="font-bold text-lg mb-1">Bát ăn cơm con voi</h3>
-          <p class="text-gray-600 text-sm mb-3">Thiết kế chống trượt - Dễ cầm nắm</p>
-          <div class="flex justify-between items-center">
-            <p class="text-primary font-semibold">200.000đ</p>
-            <a href="#contact">
-              <button class="bg-primary hover:bg-primary-dark text-white rounded-full w-10 h-10 flex items-center justify-center transition">
-                <i class="fas fa-shopping-cart"></i>
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 8 -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition relative" data-aos="fade-up">
-        <div class="absolute top-3 right-3 z-10">
-          <span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
-        </div>
-        <div class="bg-primary-light p-4 flex items-center justify-center h-56">
-          <img src="./Images/dia-trai-cay-con-voi.jpg" alt="Đĩa trái cây con voi" class="h-full w-full object-contain" />
-        </div>
-        <div class="p-4">
-          <div class="flex text-yellow-400 mb-2">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="far fa-star"></i>
-            <span class="text-gray-500 ml-1 text-sm">(4)</span>
-          </div>
-          <h3 class="font-bold text-lg mb-1">Đĩa trái cây con voi</h3>
-          <p class="text-gray-600 text-sm mb-3">Họa tiết dễ thương - Kích thích bé ăn ngon</p>
-          <div class="flex justify-between items-center">
-            <p class="text-primary font-semibold">157.000đ</p>
-            <a href="#contact">
-              <button class="bg-primary hover:bg-primary-dark text-white rounded-full w-10 h-10 flex items-center justify-center transition">
-                <i class="fas fa-shopping-cart"></i>
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 9 -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition relative" data-aos="fade-up" data-aos-delay="800">
-        <div class="absolute top-3 right-3 z-10">
-          <span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
-        </div>
-        <div class="bg-primary-light p-4 flex items-center justify-center h-56">
-          <img src="./Images/dia-nho-con-voi.jpg" alt="Đĩa nhỏ con voi" class="h-full w-full object-contain" />
-        </div>
-        <div class="p-4">
-          <div class="flex text-yellow-400 mb-2">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <span class="text-gray-500 ml-1 text-sm">(10)</span>
-          </div>
-          <h3 class="font-bold text-lg mb-1">Đĩa nhỏ con voi</h3>
-          <p class="text-gray-600 text-sm mb-3">Kích thước vừa phải - Phù hợp ăn dặm</p>
-          <div class="flex justify-between items-center">
-            <p class="text-primary font-semibold">135.000đ</p>
-            <a href="#contact">
-              <button class="bg-primary hover:bg-primary-dark text-white rounded-full w-10 h-10 flex items-center justify-center transition">
-                <i class="fas fa-shopping-cart"></i>
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 10 -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition relative" data-aos="fade-up" data-aos-delay="900">
-        <div class="absolute top-3 right-3 z-10">
-          <span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
-        </div>
-        <div class="bg-primary-light p-4 flex items-center justify-center h-56">
-          <img src="./Images/coc-nho-con-voi.jpg" alt="Cốc nhỏ con voi" class="h-full w-full object-contain" />
-        </div>
-        <div class="p-4">
-          <div class="flex text-yellow-400 mb-2">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <span class="text-gray-500 ml-1 text-sm">(8)</span>
-          </div>
-          <h3 class="font-bold text-lg mb-1">Cốc nhỏ con voi</h3>
-          <p class="text-gray-600 text-sm mb-3">Dễ cầm nắm - Không đổ tràn</p>
-          <div class="flex justify-between items-center">
-            <p class="text-primary font-semibold">153.000đ</p>
-            <a href="#contact">
-              <button class="bg-primary hover:bg-primary-dark text-white rounded-full w-10 h-10 flex items-center justify-center transition">
-                <i class="fas fa-shopping-cart"></i>
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 11 -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition relative" data-aos="fade-up" data-aos-delay="1000">
-        <div class="bg-primary-light p-4 flex items-center justify-center h-56">
-          <img src="./Images/ke-dung-do-dung-cho-nha-tre.png" alt="Kệ đựng đồ dùng cho nhà trẻ" class="h-full w-full object-contain" />
-        </div>
-        <div class="p-4">
-          <div class="flex text-yellow-400 mb-2">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <span class="text-gray-500 ml-1 text-sm">(15)</span>
-          </div>
-          <h3 class="font-bold text-lg mb-1">Kệ đựng đồ dùng cho nhà trẻ</h3>
-          <p class="text-gray-600 text-sm mb-3">Thiết kế tiện lợi - Tiết kiệm không gian</p>
-          <div class="flex justify-between items-center">
-            <p class="text-primary font-semibold">15.130.000đ</p>
-            <a href="#contact">
-              <button class="bg-primary hover:bg-primary-dark text-white rounded-full w-10 h-10 flex items-center justify-center transition">
-                <i class="fas fa-shopping-cart"></i>
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 12 -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition relative" data-aos="fade-up" data-aos-delay="1100">
-        <div class="bg-primary-light p-4 flex items-center justify-center h-56">
-          <img src="./Images/tu-1-khoang-hai-mat-cho-phong-cham-soc-tre-so-sinh.png" alt="Tủ 1 khoang hai mặt cho phòng chăm sóc trẻ sơ sinh" class="h-full w-full object-contain" />
-        </div>
-        <div class="p-4">
-          <div class="flex text-yellow-400 mb-2">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <span class="text-gray-500 ml-1 text-sm">(6)</span>
-          </div>
-          <h3 class="font-bold text-lg mb-1">Tủ 1 khoang hai mặt cho phòng chăm sóc trẻ sơ sinh</h3>
-          <p class="text-gray-600 text-sm mb-3">Chất liệu an toàn - Dễ vệ sinh</p>
-          <div class="flex justify-between items-center">
-            <p class="text-primary font-semibold">18.570.000đ</p>
-            <a href="#contact">
-              <button class="bg-primary hover:bg-primary-dark text-white rounded-full w-10 h-10 flex items-center justify-center transition">
-                <i class="fas fa-shopping-cart"></i>
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 13 -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition relative" data-aos="fade-up" data-aos-delay="1200">
-        <div class="bg-primary-light p-4 flex items-center justify-center h-56">
-          <img src="./Images/bat-an-com.png" alt="Bàn ăn cơm" class="h-full w-full object-contain" />
-        </div>
-        <div class="p-4">
-          <div class="flex text-yellow-400 mb-2">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <span class="text-gray-500 ml-1 text-sm">(9)</span>
-          </div>
-          <h3 class="font-bold text-lg mb-1">Bàn ăn cơm</h3>
-          <p class="text-gray-600 text-sm mb-3">Thiết kế chắc chắn - Phù hợp trẻ nhỏ</p>
-          <div class="flex justify-between items-center">
-            <p class="text-primary font-semibold">12.680.000đ</p>
-            <a href="#contact">
-              <button class="bg-primary hover:bg-primary-dark text-white rounded-full w-10 h-10 flex items-center justify-center transition">
-                <i class="fas fa-shopping-cart"></i>
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 14 -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition relative" data-aos="fade-up" data-aos-delay="1300">
-        <div class="absolute top-3 right-3 z-10">
-          <span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
-        </div>
-        <div class="bg-primary-light p-4 flex items-center justify-center h-56">
-          <img src="./Images/gia-treo-quan-ao.png" alt="Giá treo quần áo" class="h-full w-full object-contain" />
-        </div>
-        <div class="p-4">
-          <div class="flex text-yellow-400 mb-2">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-            <span class="text-gray-500 ml-1 text-sm">(7)</span>
-          </div>
-          <h3 class="font-bold text-lg mb-1">Giá treo quần áo</h3>
-          <p class="text-gray-600 text-sm mb-3">Tiết kiệm không gian - Dễ lắp đặt</p>
-          <div class="flex justify-between items-center">
-            <p class="text-primary font-semibold">17.300.000đ</p>
-            <a href="#contact">
-              <button class="bg-primary hover:bg-primary-dark text-white rounded-full w-10 h-10 flex items-center justify-center transition">
-                <i class="fas fa-shopping-cart"></i>
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 15 -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition relative" data-aos="fade-up" data-aos-delay="1400">
-        <div class="bg-primary-light p-4 flex items-center justify-center h-56">
-          <img src="./Images/ghe-ngoi-cho-tre-3-tuoi.png" alt="Ghế ngồi cho trẻ 3 tuổi" class="h-full w-full object-contain" />
-        </div>
-        <div class="p-4">
-          <div class="flex text-yellow-400 mb-2">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <span class="text-gray-500 ml-1 text-sm">(12)</span>
-          </div>
-          <h3 class="font-bold text-lg mb-1">Ghế ngồi cho trẻ 3 tuổi</h3>
-          <p class="text-gray-600 text-sm mb-3">Thoải mái - Hỗ trợ tư thế ngồi</p>
-          <div class="flex justify-between items-center">
-            <p class="text-primary font-semibold">3.070.000đ</p>
-            <button class="bg-primary hover:bg-primary-dark text-white rounded-full w-10 h-10 flex items-center justify-center transition">
-              <i class="fas fa-shopping-cart"><a href="#contact"></a></i>
+              class="text-gray-700 hover:text-primary transition-colors duration-300 relative nav-link">Về chúng tôi</a>
+            <a href="#blog"
+              class="text-gray-700 hover:text-primary transition-colors duration-300 relative nav-link">Blog</a>
+            <a href="#partner"
+              class="text-gray-700 hover:text-primary transition-colors duration-300 relative nav-link">Đối tác</a>
+            <a href="#contact"
+              class="text-gray-700 hover:text-primary transition-colors duration-300 relative nav-link">Liên hệ</a>
+          </nav>
+          <div class="flex items-center space-x-4">
+            <button class="md:hidden text-gray-700" id="mobile-menu-button" aria-label="Mở menu" aria-expanded="false"
+              aria-controls="mobile-menu">
+              <i class="fas fa-bars text-2xl" aria-hidden="true"></i>
             </button>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-  <!-- About Section -->
-  <section id="about" class="py-8 md:py-16 bg-primary-light">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          <!-- Slide 1: KKT -->
-          <div class="swiper-slide">
-            <div
-              class="flex flex-col md:flex-row items-center py-8 px-4 sm:px-8 md:px-12 lg:px-16 bg-blue-50 rounded-2xl shadow-md">
-              <div class="w-full md:w-1/2 mb-8 md:mb-0" data-aos="fade-right">
-                <img src="./Images/kkt-logo.jpg" alt="Logo KKT"
-                  class="rounded-xl shadow-xl w-full h-auto object-contain max-h-[400px] md:max-h-[500px]" />
-              </div>
-              <div class="w-full md:w-1/2 md:pl-8 lg:pl-12" data-aos="fade-left">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-primary mb-4 sm:mb-6 tracking-wide">Về chúng tôi
-                </h2>
-                <p class="text-gray-700 text-base sm:text-lg mb-2 leading-relaxed">
-                  <span class="font-semibold text-primary">CÔNG TY TNHH KYUSHOKU KIKAKUTAI</span> đến từ Nhật Bản, được
-                  thành lập từ năm 1986 và có gần 40 năm kinh nghiệm sản xuất, kinh doanh dụng cụ ăn uống cho trẻ em.
-                </p>
-                <p class="text-gray-700 text-base sm:text-lg mb-2 leading-relaxed">Sứ mệnh của KKT là tạo ra những sản
-                  phẩm bát đĩa, dụng cụ ăn uống dành cho trẻ em chất lượng cao, an toàn, thân thiện cho bé và môi
-                  trường.</p>
-                <p class="text-gray-700 text-base sm:text-lg mb-4 leading-relaxed">"Chăm con chuẩn Nhật, bảo vệ con
-                  trong từng bữa ăn"</p>
-                <div class="space-y-4 sm:space-y-6">
-                  <div class="flex items-start">
-                    <div class="bg-white p-2 sm:p-3 rounded-full shadow mr-3 sm:mr-4">
-                      <i class="fas fa-check text-primary text-base sm:text-lg"></i>
-                    </div>
-                    <div>
-                      <h3 class="text-base sm:text-lg font-bold text-gray-800 mb-1">Chất lượng hàng đầu</h3>
-                      <p class="text-gray-600 text-sm sm:text-base">Tại Nhật Bản, việc chăm sóc trẻ em không chỉ đơn
-                        giản là cung cấp những gì tốt nhất về thể chất mà còn chú trọng đến việc xây dựng một môi trường
-                        sống an toàn, lành mạnh từ những chi tiết nhỏ nhất.</p>
-                    </div>
-                  </div>
-                  <div class="flex items-start">
-                    <div class="bg-white p-2 sm:p-3 rounded-full shadow mr-3 sm:mr-4">
-                      <i class="fas fa-check text-primary text-base sm:text-lg"></i>
-                    </div>
-                    <div>
-                      <h3 class="text-base sm:text-lg font-bold text-gray-800 mb-1">An toàn tuyệt đối</h3>
-                      <p class="text-gray-600 text-sm sm:text-base">Từ những chiếc bát đĩa, dụng cụ ăn uống đến không
-                        gian sống, tất cả đều được lựa chọn tỉ mỉ, đảm bảo an toàn cho sự phát triển của trẻ.</p>
-                    </div>
-                  </div>
-                  <div class="flex items-start">
-                    <div class="bg-white p-2 sm:p-3 rounded-full shadow mr-3 sm:mr-4">
-                      <i class="fas fa-check text-primary text-base sm:text-lg"></i>
-                    </div>
-                    <div>
-                      <h3 class="text-base sm:text-lg font-bold text-gray-800 mb-1">Chất lượng chuẩn Nhật, bảo vệ sức
-                        khỏe bé</h3>
-                      <p class="text-gray-600 text-sm sm:text-base">Bằng việc lựa chọn những sản phẩm bát đĩa an toàn,
-                        thân thiện với môi trường, được sản xuất với công nghệ tiên tiến và tiêu chuẩn cao từ Nhật Bản,
-                        bạn đang bảo vệ con yêu trong từng bữa ăn.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <!-- Mobile Menu -->
+        <div
+          class="md:hidden fixed inset-y-0 left-0 w-3/4 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out z-50"
+          id="mobile-menu" aria-label="Menu di động">
+          <div class="flex flex-col space-y-4 py-4 h-full">
+            <div class="flex justify-between items-center px-4 pb-4">
+              <img src="./Images/kkt-logo.png" alt="Logo KKT" class="w-20 h-20 object-contain" width="80" height="80" />
+              <img src="./Images/waki-market-logo.png" alt="Logo Waki Market" class="w-20 h-20 object-contain"
+                width="80" height="80" />
+              <button class="text-gray-700" id="mobile-menu-close" aria-label="Đóng menu">
+                <i class="fas fa-times text-2xl" aria-hidden="true"></i>
+              </button>
             </div>
-          </div>
-          <!-- Slide 2: Waki Market -->
-          <div class="swiper-slide">
-            <div
-              class="flex flex-col md:flex-row items-center py-8 px-4 sm:px-8 md:px-12 lg:px-16 bg-blue-50 rounded-2xl shadow-md">
-              <div class="w-full md:w-1/2 mb-8 md:mb-0" data-aos="fade-right">
-                <img src="./Images/waki-market-logo.png" alt="Logo Waki Market"
-                  class="rounded-xl shadow-xl w-full h-auto object-contain max-h-[400px] md:max-h-[500px]" />
-              </div>
-              <div class="w-full md:w-1/2 md:pl-8 lg:pl-12" data-aos="fade-left">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-primary mb-4 sm:mb-6 tracking-wide">Về chúng tôi
-                </h2>
-                <p class="text-gray-700 text-base sm:text-lg mb-2 leading-relaxed">
-                  <span class="font-semibold text-primary">WAKI MARKET</span> là nền tảng thương mại chuyên phân phối
-                  các sản phẩm chất lượng cao, với sứ mệnh kết nối những thương hiệu uy tín từ Nhật Bản đến tay người
-                  tiêu dùng Việt Nam. Đây còn là cầu nối thương mại giữa Việt Nam và Nhật Bản, góp phần thúc đẩy xu
-                  hướng tiêu dùng bền vững, tinh tế và văn minh.
-                </p>
-                <p class="text-gray-700 text-base sm:text-lg mb-2 leading-relaxed">
-                  WAKI MARKET tự hào là đại lý độc quyền của thương hiệu KKT tại Việt Nam – một trong những nhà sản xuất
-                  bát đĩa cao cấp hàng đầu Nhật Bản. Chúng tôi cam kết mang đến những sản phẩm không chỉ bền đẹp, an
-                  toàn cho sức khỏe, mà còn góp phần nâng tầm không gian sống của mọi gia đình.
-                </p>
-              </div>
+            <div class="px-4 pb-4">
+              <input type="text" placeholder="Tìm kiếm sản phẩm..." aria-label="Tìm kiếm sản phẩm"
+                class="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary" />
             </div>
+            <a href="#home"
+              class="text-gray-700 hover:text-primary transition-colors duration-300 px-4 mobile-nav-link">Trang chủ</a>
+            <a href="#products"
+              class="text-gray-700 hover:text-primary transition-colors duration-300 px-4 mobile-nav-link">Sản phẩm</a>
+            <a href="#about"
+              class="text-gray-700 hover:text-primary transition-colors duration-300 px-4 mobile-nav-link">Về chúng
+              tôi</a>
+            <a href="#blog"
+              class="text-gray-700 hover:text-primary transition-colors duration-300 px-4 mobile-nav-link">Blog</a>
+            <a href="#partner"
+              class="text-gray-700 hover:text-primary transition-colors duration-300 px-4 mobile-nav-link">Đối tác</a>
+            <a href="#contact"
+              class="text-gray-700 hover:text-primary transition-colors duration-300 px-4 mobile-nav-link">Liên hệ</a>
           </div>
         </div>
-        <div class="swiper-button-next hidden"></div>
-        <div class="swiper-button-prev hidden"></div>
-        <div class="swiper-pagination"></div>
+        <!-- Overlay -->
+        <div class="fixed inset-0 bg-black bg-opacity-50 hidden" id="mobile-menu-overlay" aria-hidden="true"></div>
       </div>
-    </div>
-  </section>
-
-  <!-- Video Section -->
-  <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold mb-4" data-aos="fade-up">Video giới thiệu</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Khám phá quy trình sản xuất
-          và sử dụng sản phẩm KKT tại Nhật Bản</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Video 1 -->
-        <div class="bg-white rounded-lg shadow-md overflow-hidden" data-aos="fade-up">
-          <div class="aspect-w-16 aspect-h-9">
-            <iframe class="w-full h-64 md:h-80" src="https://www.youtube.com/embed/gCG_l6B9z50"
-              title="Quy trình sản xuất bát đĩa tại nhà máy Nhật Bản" frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-          </div>
-          <div class="p-6">
-            <h3 class="font-bold text-xl mb-2">Quy trình sản xuất bát đĩa tại nhà máy Nhật Bản</h3>
-            <p class="text-gray-600 mb-4">Video ghi lại quy trình sản xuất bát đĩa của thương hiệu KKT (Kyushoku
-              Kikakutai) tại nhà máy ở Nhật Bản, cho thấy sự tỉ mỉ, chuẩn xác và tâm huyết trong từng công đoạn chế tác
-              – từ khâu lựa chọn nguyên liệu đến hoàn thiện sản phẩm đạt chuẩn an toàn cho trẻ nhỏ.</p>
-            <a href="https://youtu.be/gCG_l6B9z50" target="_blank" class="text-primary font-medium hover:underline">Xem
-              trên YouTube <i class="fas fa-external-link-alt ml-1"></i></a>
-          </div>
-        </div>
-
-        <!-- Video 2 -->
-        <div class="bg-white rounded-lg shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-          <div class="aspect-w-16 aspect-h-9">
-            <iframe class="w-full h-64 md:h-80" src="https://www.youtube.com/embed/2CiKUW4YiPI"
-              title="Trẻ em Nhật Bản sử dụng bát đĩa KKT" frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-          </div>
-          <div class="p-6">
-            <h3 class="font-bold text-xl mb-2">Trẻ em Nhật Bản sử dụng bát đĩa KKT trong giờ ăn trưa</h3>
-            <p class="text-gray-600 mb-4">Video mang đến những khoảnh khắc đời thường đáng yêu khi các em nhỏ Nhật Bản
-              dùng bát đĩa KKT trong bữa ăn trưa tại trường. Đây không chỉ là minh chứng cho sự tin tưởng từ các cơ sở
-              giáo dục, mà còn thể hiện giá trị ứng dụng thực tế và sự phù hợp của sản phẩm trong môi trường học đường.
+    </header>
+    <!-- Hero Banner -->
+    <section id="home" class="relative bg-gradient-to-r from-primary-light to-white py-16 overflow-hidden">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 mb-8 md:mb-0 hero-content">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4 text-center leading-relaxed">
+              Chăm con chuẩn Nhật với<br>
+              <span class="text-primary mt-3 block">sản phẩm bát đĩa chất lượng cao đến từ Nhật Bản</span>
+            </h1>
+            <p class="text-gray-600 mb-8 text-lg opacity-0 hero-text mx-6">
+              Bát đĩa KKT được sản xuất theo tiêu chuẩn nghiêm ngặt tại Nhật, an toàn cho bé, bền bỉ với thời gian, đồng
+              hành cùng con trong từng bữa ăn đầu đời.
             </p>
-            <a href="https://youtu.be/2CiKUW4YiPI" target="_blank" class="text-primary font-medium hover:underline">Xem
-              trên YouTube <i class="fas fa-external-link-alt ml-1"></i></a>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 opacity-0 hero-buttons text-center">
+              <a href="#products"
+                class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-full transition-all duration-300 btn-shimmer btn-primary">Mua
+                ngay</a>
+              <a href="#about"
+                class="border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 px-6 rounded-full transition-all duration-300">Tìm
+                hiểu thêm</a>
+            </div>
+          </div>
+          <div class="md:w-1/2 hero-image opacity-0">
+            <img src="./Images/KKT booth banner-04.png" alt="Bé sử dụng bát đĩa KKT"
+              class="rounded-lg shadow-xl w-full h-auto" width="600" height="400" />
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Blog Section -->
-  <section id="blog" class="py-16 bg-primary-light">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold mb-4" data-aos="fade-up">Bài viết hữu ích</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Những kiến thức và mẹo hữu
-          ích trong việc chăm sóc bé yêu</p>
+      <!-- Decorative elements -->
+      <div class="absolute top-10 right-10 opacity-20 float" aria-hidden="true">
+        <i class="fas fa-baby text-6xl text-primary"></i>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white rounded-lg shadow-md overflow-hidden" data-aos="fade-up">
-          <img src="./Images/bai-viet-1.jpg" alt="5 sai lầm thường gặp khi chọn bát đĩa cho bé ăn dặm"
-            class="w-full h-48 object-cover" />
-          <div class="p-6">
-            <div class="flex items-center text-gray-500 text-sm mb-2">
-              <i class="far fa-calendar-alt mr-2"></i>
-              <span>15/05/2025</span>
-              <span class="mx-2">|</span>
-              <i class="far fa-user mr-2"></i>
-              <span>Bs. Nguyễn Thị Hương</span>
+      <div class="absolute bottom-10 left-10 opacity-20 float" aria-hidden="true">
+        <i class="fas fa-heart text-6xl text-primary"></i>
+      </div>
+      <!-- Animated background shapes -->
+      <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none" aria-hidden="true">
+        <div class="absolute w-20 h-20 rounded-full bg-primary-light opacity-20 top-[20%] left-[10%] float"></div>
+        <div class="absolute w-16 h-16 rounded-full bg-primary-light opacity-20 top-[60%] left-[20%] float"
+          style="animation-delay: 0.5s"></div>
+        <div class="absolute w-24 h-24 rounded-full bg-primary-light opacity-20 top-[30%] right-[15%] float"
+          style="animation-delay: 1s"></div>
+        <div class="absolute w-12 h-12 rounded-full bg-primary-light opacity-20 top-[70%] right-[25%] float"
+          style="animation-delay: 1.5s"></div>
+      </div>
+    </section>
+    <!-- Shipping Policy Banner -->
+    <section class="py-8 bg-white" aria-labelledby="shipping-policy-heading">
+      <h2 id="shipping-policy-heading" class="sr-only">Chính sách vận chuyển và cam kết</h2>
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div class="flex items-center space-x-4 policy-item">
+            <div class="text-primary text-3xl policy-icon" aria-hidden="true">
+              <i class="fas fa-truck"></i>
             </div>
-            <h3 class="font-bold text-xl mb-2">5 sai lầm thường gặp khi chọn bát đĩa cho bé ăn dặm</h3>
-            <p class="text-gray-600 mb-4">Nhiều mẹ không để ý đến chất liệu hay thiết kế của bát đĩa, vô tình ảnh hưởng
-              đến sức khỏe và thói quen ăn uống của bé.</p>
-            <a href="#" class="text-primary font-medium hover:underline">Đọc tiếp <i
-                class="fas fa-arrow-right ml-1"></i></a>
+            <div>
+              <h3 class="font-bold">An toàn tuyệt đối</h3>
+              <p class="text-sm text-gray-600">Không giải phóng cadmium & chì, đạt kiểm định nghiêm ngặt từ Nhật Bản</p>
+            </div>
           </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-          <img src="./Images/bai-viet-2.webp" alt="Cách chọn bát đĩa theo từng độ tuổi và giai đoạn ăn dặm"
-            class="w-full h-48 object-cover" />
-          <div class="p-6">
-            <div class="flex items-center text-gray-500 text-sm mb-2">
-              <i class="far fa-calendar-alt mr-2"></i>
-              <span>10/05/2025</span>
-              <span class="mx-2">|</span>
-              <i class="far fa-user mr-2"></i>
-              <span>Chuyên gia Trần Minh</span>
+          <div class="flex items-center space-x-4 policy-item">
+            <div class="text-primary text-3xl policy-icon" aria-hidden="true">
+              <i class="fas fa-sync-alt"></i>
             </div>
-            <h3 class="font-bold text-xl mb-2">Cách chọn bát đĩa theo từng độ tuổi và giai đoạn ăn dặm</h3>
-            <p class="text-gray-600 mb-4">Hướng dẫn chi tiết giúp mẹ chọn loại bát phù hợp theo khả năng cầm nắm, lượng
-              ăn và độ tuổi của bé.</p>
-            <a href="#" class="text-primary font-medium hover:underline">Đọc tiếp <i
-                class="fas fa-arrow-right ml-1"></i></a>
+            <div>
+              <h3 class="font-bold">Đóng gói kỹ lưỡng</h3>
+              <p class="text-sm text-gray-600">Đảm bảo sản phẩm nguyên vẹn khi khách nhận hàng</p>
+            </div>
           </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="200">
-          <img src="./Images/bai-viet-3.JPG" alt="Vì sao nên dùng bát đĩa không chứa chì, cadmium cho bé?"
-            class="w-full h-48 object-cover" />
-          <div class="p-6">
-            <div class="flex items-center text-gray-500 text-sm mb-2">
-              <i class="far fa-calendar-alt mr-2"></i>
-              <span>05/05/2025</span>
-              <span class="mx-2">|</span>
-              <i class="far fa-user mr-2"></i>
-              <span>Bs. Lê Văn An</span>
+          <div class="flex items-center space-x-4 policy-item">
+            <div class="text-primary text-3xl policy-icon" aria-hidden="true">
+              <i class="fas fa-shield-alt"></i>
             </div>
-            <h3 class="font-bold text-xl mb-2">Vì sao nên dùng bát đĩa không chứa chì, cadmium cho bé?</h3>
-            <p class="text-gray-600 mb-4">Giải thích rõ tác hại của kim loại nặng trong đồ ăn và cách phòng tránh bằng
-              việc chọn sản phẩm an toàn như Diaceram.</p>
-            <a href="#" class="text-primary font-medium hover:underline">Đọc tiếp <i
-                class="fas fa-arrow-right ml-1"></i></a>
+            <div>
+              <h3 class="font-bold">Sản phẩm chính hãng</h3>
+              <p class="text-sm text-gray-600">100% sản phẩm an toàn</p>
+            </div>
+          </div>
+          <div class="flex items-center space-x-4 policy-item">
+            <div class="text-primary text-3xl policy-icon" aria-hidden="true">
+              <i class="fas fa-headset"></i>
+            </div>
+            <div>
+              <h3 class="font-bold">Hỗ trợ 24/7</h3>
+              <p class="text-sm text-gray-600">Tư vấn trực tuyến</p>
+            </div>
           </div>
         </div>
       </div>
-      <!-- <div class="text-center mt-10">
-        <a href="#"
-          class="inline-block bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-full transition">Xem
-          tất cả bài viết</a>
-      </div> -->
-    </div>
-  </section>
+    </section>
+    <!-- Features -->
+    <section class="py-16 bg-white" aria-labelledby="features-heading">
+      <h2 id="features-heading" class="sr-only">Tính năng sản phẩm</h2>
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="p-8 rounded-lg text-center shadow-md bg-primary-light ">
+            <div
+              class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md feature-icon"
+              aria-hidden="true">
+              <i class="fas fa-leaf text-2xl text-baby-pink-dark"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Độ bền vượt trội</h3>
+            <p class="text-gray-600">Chịu lực đến 230MPa – bền gấp 3–4 lần bát đĩa thường, không lo nứt vỡ khi va chạm.
+            </p>
+          </div>
+          <div class="bg-primary-light p-8 rounded-lg text-center shadow-md ">
+            <div
+              class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md feature-icon"
+              aria-hidden="true">
+              <i class="fas fa-tint text-2xl text-baby-pink-dark"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Khả năng chịu nhiệt tốt</h3>
+            <p class="text-gray-600">An toàn trong lò vi sóng, máy rửa bát với khả năng chịu nhiệt lên tới 1000°C.</p>
+          </div>
+          <div class="bg-primary-light p-8 rounded-lg text-center shadow-md ">
+            <div
+              class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md feature-icon"
+              aria-hidden="true">
+              <i class="fas fa-shield-alt text-2xl text-baby-pink-dark"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Thiết kế thông minh & tinh tế</h3>
+            <p class="text-gray-600">Đáy có ren chống trượt, dễ cầm nắm; bề mặt trắng sáng, dễ lau chùi và giữ được vẻ
+              đẹp
+              lâu dài.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- Become a Distributor Section -->
-  <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="bg-gradient-to-r from-primary-light to-white p-8 md:p-12 rounded-2xl shadow-lg">
-        <div class="flex flex-col md:flex-row items-center justify-between">
-          <div class="md:w-2/3 mb-8 md:mb-0" data-aos="fade-right">
-            <h2 class="text-3xl font-bold mb-4">Trở Thành Đại Lý Cùng Kyushoku Kikakutai</h2>
-            <p class="text-gray-600 mb-6">Chúng tôi luôn tìm kiếm những đối tác đồng hành để lan tỏa giá trị của những
-              sản phẩm chất lượng cao đến tay người tiêu dùng Việt. Với chính sách bán sỉ linh hoạt, ưu đãi hấp dẫn cùng
-              các chương trình hỗ trợ marketing và hậu mãi chuyên nghiệp – nhằm giúp đại lý yên tâm phát triển và gia
-              tăng lợi nhuận bền vững.</p>
+    <!-- Video Section -->
+    <section class="py-16 bg-primary-light" aria-labelledby="video-heading">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 id="video-heading" class="text-3xl font-bold mb-4 section-title">Video giới thiệu</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto section-description">Khám phá quy trình sản xuất
+            và sử dụng sản phẩm KKT tại Nhật Bản</p>
+        </div>
 
-            <div class="bg-white p-6 rounded-lg shadow-md mb-6">
-              <h3 class="font-bold text-xl mb-3">Liên hệ làm đại lý:</h3>
-              <div class="flex items-center mb-2">
-                <i class="fas fa-envelope text-primary mr-3"></i>
-                <span>Email: <a href="mailto:contact.wakimarket@gmail.com"
-                    class="text-primary hover:underline">contact.wakimarket@gmail.com</a></span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Video 1 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden video-card">
+            <div class="aspect-w-16 aspect-h-9 relative video-container">
+              <div class="absolute inset-0 bg-gray-200 skeleton video-placeholder"></div>
+              <iframe class="w-full h-64 md:h-80 relative z-10 opacity-0 video-iframe"
+                src="https://www.youtube.com/embed/gCG_l6B9z50" title="Quy trình sản xuất bát đĩa tại nhà máy Nhật Bản"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="p-6">
+              <h3 class="font-bold text-xl mb-2">Quy trình sản xuất bát đĩa tại nhà máy Nhật Bản</h3>
+              <p class="text-gray-600 mb-4">Video ghi lại quy trình sản xuất bát đĩa của thương hiệu KKT (Kyushoku
+                Kikakutai) tại nhà máy ở Nhật Bản, cho thấy sự tỉ mỉ, chuẩn xác và tâm huyết trong từng công đoạn chế
+                tác
+                – từ khâu lựa chọn nguyên liệu đến hoàn thiện sản phẩm đạt chuẩn an toàn cho trẻ nhỏ.</p>
+              <a href="https://youtu.be/gCG_l6B9z50" target="_blank" rel="noopener noreferrer"
+                class="text-primary font-medium hover:underline video-link group">Xem
+                trên YouTube <i
+                  class="fas fa-external-link-alt ml-1 group-hover:translate-x-1 transition-transform duration-300"
+                  aria-hidden="true"></i></a>
+            </div>
+          </div>
+
+          <!-- Video 2 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden video-card">
+            <div class="aspect-w-16 aspect-h-9 relative video-container">
+              <div class="absolute inset-0 bg-gray-200 skeleton video-placeholder"></div>
+              <iframe class="w-full h-64 md:h-80 relative z-10 opacity-0 video-iframe"
+                src="https://www.youtube.com/embed/2CiKUW4YiPI" title="Trẻ em Nhật Bản sử dụng bát đĩa KKT"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="p-6">
+              <h3 class="font-bold text-xl mb-2">Trẻ em Nhật Bản sử dụng bát đĩa KKT trong giờ ăn trưa</h3>
+              <p class="text-gray-600 mb-4">Video mang đến những khoảnh khắc đời thường đáng yêu khi các em nhỏ Nhật Bản
+                dùng bát đĩa KKT trong bữa ăn trưa tại trường. Đây không chỉ là minh chứng cho sự tin tưởng từ các cơ sở
+                giáo dục, mà còn thể hiện giá trị ứng dụng thực tế và sự phù hợp của sản phẩm trong môi trường học
+                đường.
+              </p>
+              <a href="https://youtu.be/2CiKUW4YiPI" target="_blank" rel="noopener noreferrer"
+                class="text-primary font-medium hover:underline video-link group">Xem
+                trên YouTube <i
+                  class="fas fa-external-link-alt ml-1 group-hover:translate-x-1 transition-transform duration-300"
+                  aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section id="products" class="py-16 bg-white" aria-labelledby="products-heading">
+      <div class="container mx-auto px-4">
+        <!-- Section Header -->
+        <header class="text-center mb-12">
+          <h2 id="products-heading" class="text-3xl font-bold mb-3 section-title">Danh mục sản phẩm</h2>
+          <h3 class="text-2xl font-bold mb-4 section-subtitle">Giá bán lẻ đề xuất</h3>
+          <p class="text-gray-600 max-w-2xl mx-auto section-description">
+            Chúng tôi cung cấp đa dạng các sản phẩm bát đĩa, dụng cụ ăn uống cho bé yêu với chất lượng tốt nhất
+          </p>
+        </header>
+
+        <!-- Product Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="product-grid"></div>
+      </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="py-8 md:py-16 bg-primary-light" aria-labelledby="about-heading">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 id="about-heading" class="text-3xl font-bold mb-4 section-title">Về chúng tôi</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto section-description">Những kiến thức và mẹo hữu
+            ích trong việc chăm sóc bé yêu</p>
+        </div>
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <!-- Slide 1: KKT -->
+            <div class="swiper-slide">
+              <div
+                class="flex flex-col md:flex-row items-center py-8 px-4 sm:px-8 md:px-12 lg:px-16 bg-blue-50 rounded-2xl shadow-md">
+                <div class="w-full md:w-1/2 mb-8 md:mb-0 about-image">
+                  <img src="./Images/KKT 2.ai.png" alt="Logo KKT"
+                    class="rounded-xl shadow-xl w-full h-auto object-contain max-h-[400px] md:max-h-[500px]" width="400"
+                    height="400" />
+                </div>
+                <div class="w-full md:w-1/2 md:pl-8 lg:pl-12 about-content">
+                  <p class="text-gray-700 text-base sm:text-lg mb-2 leading-relaxed">
+                    <span class="font-semibold text-primary">CÔNG TY TNHH KYUSHOKU KIKAKUTAI</span> đến từ Nhật Bản,
+                    được
+                    thành lập từ năm 1986 và có gần 40 năm kinh nghiệm sản xuất, kinh doanh dụng cụ ăn uống cho trẻ em.
+                  </p>
+                  <p class="text-gray-700 text-base sm:text-lg mb-2 leading-relaxed">Sứ mệnh của KKT là tạo ra những sản
+                    phẩm bát đĩa, dụng cụ ăn uống dành cho trẻ em chất lượng cao, an toàn, thân thiện cho bé và môi
+                    trường.</p>
+                  <p class="text-gray-700 text-base sm:text-lg mb-4 leading-relaxed">"Chăm con chuẩn Nhật, bảo vệ con
+                    trong từng bữa ăn"</p>
+                  <div class="space-y-4 sm:space-y-6">
+                    <div class="flex items-start about-feature">
+                      <div class="bg-white p-2 sm:p-3 rounded-full shadow mr-3 sm:mr-4 about-icon" aria-hidden="true">
+                        <i class="fas fa-check text-primary text-base sm:text-lg"></i>
+                      </div>
+                      <div>
+                        <h3 class="text-base sm:text-lg font-bold text-gray-800 mb-1">Chất lượng hàng đầu</h3>
+                        <p class="text-gray-600 text-sm sm:text-base">Tại Nhật Bản, việc chăm sóc trẻ em không chỉ đơn
+                          giản là cung cấp những gì tốt nhất về thể chất mà còn chú trọng đến việc xây dựng một môi
+                          trường
+                          sống an toàn, lành mạnh từ những chi tiết nhỏ nhất.</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start about-feature">
+                      <div class="bg-white p-2 sm:p-3 rounded-full shadow mr-3 sm:mr-4 about-icon" aria-hidden="true">
+                        <i class="fas fa-check text-primary text-base sm:text-lg"></i>
+                      </div>
+                      <div>
+                        <h3 class="text-base sm:text-lg font-bold text-gray-800 mb-1">An toàn tuyệt đối</h3>
+                        <p class="text-gray-600 text-sm sm:text-base">Từ những chiếc bát đĩa, dụng cụ ăn uống đến không
+                          gian sống, tất cả đều được lựa chọn tỉ mỉ, đảm bảo an toàn cho sự phát triển của trẻ.</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start about-feature">
+                      <div class="bg-white p-2 sm:p-3 rounded-full shadow mr-3 sm:mr-4 about-icon" aria-hidden="true">
+                        <i class="fas fa-check text-primary text-base sm:text-lg"></i>
+                      </div>
+                      <div>
+                        <h3 class="text-base sm:text-lg font-bold text-gray-800 mb-1">Chất lượng chuẩn Nhật, bảo vệ sức
+                          khỏe bé</h3>
+                        <p class="text-gray-600 text-sm sm:text-base">Bằng việc lựa chọn những sản phẩm bát đĩa an toàn,
+                          thân thiện với môi trường, được sản xuất với công nghệ tiên tiến và tiêu chuẩn cao từ Nhật
+                          Bản,
+                          bạn đang bảo vệ con yêu trong từng bữa ăn.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="flex items-center">
-                <i class="fas fa-phone-alt text-primary mr-3"></i>
-                <span>Hotline: <a href="tel:0865961001" class="text-primary hover:underline">0865 961 001</a></span>
+            </div>
+            <!-- Slide 2: Waki Market -->
+            <div class="swiper-slide">
+              <div
+                class="flex flex-col md:flex-row items-center py-8 px-4 sm:px-8 md:px-12 lg:px-16 bg-blue-50 rounded-2xl shadow-md">
+                <div class="w-full md:w-1/2 mb-8 md:mb-0 about-image">
+                  <img src="./Images/waki-market-logo.png" alt="Logo Waki Market"
+                    class="rounded-xl shadow-xl w-full h-auto object-contain max-h-[400px] md:max-h-[500px]" width="400"
+                    height="400" />
+                </div>
+                <div class="w-full md:w-1/2 md:pl-8 lg:pl-12 about-content">
+                  <h2 class="text-3xl sm:text-4xl font-extrabold text-primary mb-4 sm:mb-6 tracking-wide">Về chúng tôi
+                  </h2>
+                  <p class="text-gray-700 text-base sm:text-lg mb-2 leading-relaxed">
+                    <span class="font-semibold text-primary">WAKI MARKET</span> là nền tảng thương mại chuyên phân phối
+                    các sản phẩm chất lượng cao, với sứ mệnh kết nối những thương hiệu uy tín từ Nhật Bản đến tay người
+                    tiêu dùng Việt Nam. Đây còn là cầu nối thương mại giữa Việt Nam và Nhật Bản, góp phần thúc đẩy xu
+                    hướng tiêu dùng bền vững, tinh tế và văn minh.
+                  </p>
+                  <p class="text-gray-700 text-base sm:text-lg mb-2 leading-relaxed">
+                    WAKI MARKET tự hào là đại lý độc quyền của thương hiệu KKT tại Việt Nam – một trong những nhà sản
+                    xuất
+                    bát đĩa cao cấp hàng đầu Nhật Bản. Chúng tôi cam kết mang đến những sản phẩm không chỉ bền đẹp, an
+                    toàn cho sức khỏe, mà còn góp phần nâng tầm không gian sống của mọi gia đình.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-          <div class="md:w-1/3" data-aos="fade-left">
-            <div class="bg-white p-6 rounded-lg shadow-md">
-              <h3 class="font-bold text-xl mb-4 text-center">Đăng ký làm đại lý</h3>
+          <div class="swiper-button-next hidden" aria-hidden="true"></div>
+          <div class="swiper-button-prev hidden" aria-hidden="true"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
 
-              <form id="distributor-form" data-form data-success="form-success-msg">
-                <!-- Hidden fields for FormSubmit -->
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_subject" value="Yêu cầu đăng ký làm đại lý mới" />
+    <!-- Blog Section -->
+    <section id="blog" class="py-16 bg-white" aria-labelledby="blog-heading">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 id="blog-heading" class="text-3xl font-bold mb-4 section-title">Bài viết hữu ích</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto section-description">Những kiến thức và mẹo hữu
+            ích trong việc chăm sóc bé yêu</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <article class="bg-white rounded-lg shadow-md overflow-hidden blog-card">
+            <div class="overflow-hidden">
+              <img src="./Images/bai-viet-1.jpg" alt="5 sai lầm thường gặp khi chọn bát đĩa cho bé ăn dặm"
+                class="w-full h-48 object-cover blog-image transition-transform duration-500" width="400"
+                height="200" />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center text-gray-500 text-sm mb-2">
+                <i class="far fa-calendar-alt mr-2" aria-hidden="true"></i>
+                <time datetime="2025-05-15">15/05/2025</time>
+                <span class="mx-2">|</span>
+                <i class="far fa-user mr-2" aria-hidden="true"></i>
+                <span>Bs. Nguyễn Thị Hương</span>
+              </div>
+              <h3 class="font-bold text-xl mb-2">5 sai lầm thường gặp khi chọn bát đĩa cho bé ăn dặm</h3>
+              <p class="text-gray-600 mb-4">Nhiều mẹ không để ý đến chất liệu hay thiết kế của bát đĩa, vô tình ảnh
+                hưởng
+                đến sức khỏe và thói quen ăn uống của bé.</p>
+              <a href="#" class="text-primary font-medium hover:underline group">Đọc tiếp <i
+                  class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform duration-300"
+                  aria-hidden="true"></i></a>
+            </div>
+          </article>
+          <article class="bg-white rounded-lg shadow-md overflow-hidden blog-card">
+            <div class="overflow-hidden">
+              <img src="./Images/bai-viet-2.webp" alt="Cách chọn bát đĩa theo từng độ tuổi và giai đoạn ăn dặm"
+                class="w-full h-48 object-cover blog-image transition-transform duration-500" width="400"
+                height="200" />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center text-gray-500 text-sm mb-2">
+                <i class="far fa-calendar-alt mr-2" aria-hidden="true"></i>
+                <time datetime="2025-05-10">10/05/2025</time>
+                <span class="mx-2">|</span>
+                <i class="far fa-user mr-2" aria-hidden="true"></i>
+                <span>Chuyên gia Trần Minh</span>
+              </div>
+              <h3 class="font-bold text-xl mb-2">Cách chọn bát đĩa theo từng độ tuổi và giai đoạn ăn dặm</h3>
+              <p class="text-gray-600 mb-4">Hướng dẫn chi tiết giúp mẹ chọn loại bát phù hợp theo khả năng cầm nắm,
+                lượng
+                ăn và độ tuổi của bé.</p>
+              <a href="#" class="text-primary font-medium hover:underline group">Đọc tiếp <i
+                  class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform duration-300"
+                  aria-hidden="true"></i></a>
+            </div>
+          </article>
+          <article class="bg-white rounded-lg shadow-md overflow-hidden blog-card">
+            <div class="overflow-hidden">
+              <img src="./Images/bai-viet-3.JPG" alt="Vì sao nên dùng bát đĩa không chứa chì, cadmium cho bé?"
+                class="w-full h-48 object-cover blog-image transition-transform duration-500" width="400"
+                height="200" />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center text-gray-500 text-sm mb-2">
+                <i class="far fa-calendar-alt mr-2" aria-hidden="true"></i>
+                <time datetime="2025-05-05">05/05/2025</time>
+                <span class="mx-2">|</span>
+                <i class="far fa-user mr-2" aria-hidden="true"></i>
+                <span>Bs. Lê Văn An</span>
+              </div>
+              <h3 class="font-bold text-xl mb-2">Vì sao nên dùng bát đĩa không chứa chì, cadmium cho bé?</h3>
+              <p class="text-gray-600 mb-4">Giải thích rõ tác hại của kim loại nặng trong đồ ăn và cách phòng tránh bằng
+                việc chọn sản phẩm an toàn như Diaceram.</p>
+              <a href="#" class="text-primary font-medium hover:underline group">Đọc tiếp <i
+                  class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform duration-300"
+                  aria-hidden="true"></i></a>
+            </div>
+          </article>
+        </div>
 
-                <div class="mb-4">
-                  <label for="distributor-name" class="block text-gray-700 mb-2">Họ và tên</label>
-                  <input type="text" id="distributor-name" name="Họ và tên"
-                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
-                    required />
+      </div>
+    </section>
+
+    <!-- Become a Distributor Section -->
+    <section id="partner" class="py-16 bg-white" aria-labelledby="partner-heading">
+      <div class="container mx-auto px-4">
+        <div class="bg-gradient-to-r from-primary-light to-white p-8 md:p-12 rounded-2xl shadow-lg">
+          <div class="flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-2/3 mb-8 md:mb-0 partner-content">
+              <h2 id="partner-heading" class="text-3xl font-bold mb-4">Trở Thành Đại Lý Cùng Kyushoku Kikakutai</h2>
+              <p class="text-gray-600 mb-6">Chúng tôi luôn tìm kiếm những đối tác đồng hành để lan tỏa giá trị của những
+                sản phẩm chất lượng cao đến tay người tiêu dùng Việt. Với chính sách bán sỉ linh hoạt, ưu đãi hấp dẫn
+                cùng
+                các chương trình hỗ trợ marketing và hậu mãi chuyên nghiệp – nhằm giúp đại lý yên tâm phát triển và gia
+                tăng lợi nhuận bền vững.</p>
+
+              <div class="bg-white p-6 rounded-lg shadow-md mb-6 partner-info">
+                <h3 class="font-bold text-xl mb-3">Liên hệ làm đại lý:</h3>
+                <div class="flex items-center mb-2">
+                  <i class="fas fa-envelope text-primary mr-3" aria-hidden="true"></i>
+                  <span>Email: <a href="mailto:contact.wakimarket@gmail.com"
+                      class="text-primary hover:underline">contact.wakimarket@gmail.com</a></span>
                 </div>
-
-                <div class="mb-4">
-                  <label for="distributor-email" class="block text-gray-700 mb-2">Email</label>
-                  <input type="email" id="distributor-email" name="Email"
-                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
-                    required />
+                <div class="flex items-center">
+                  <i class="fas fa-phone-alt text-primary mr-3" aria-hidden="true"></i>
+                  <span>Hotline: <a href="tel:0865961001" class="text-primary hover:underline">0865 961 001</a></span>
                 </div>
+              </div>
+            </div>
+            <div class="md:w-1/3 partner-form">
+              <div class="bg-white p-6 rounded-lg shadow-md transform transition-transform duration-500">
+                <h3 class="font-bold text-xl mb-4 text-center">Đăng ký làm đại lý</h3>
 
-                <div class="mb-4">
-                  <label for="distributor-phone" class="block text-gray-700 mb-2">Số điện thoại</label>
-                  <input type="tel" id="distributor-phone" name="Số điện thoại"
-                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
-                    required />
-                </div>
+                <form id="distributor-form" data-form data-success="form-success-msg">
+                  <!-- Hidden fields for FormSubmit -->
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="hidden" name="_template" value="table" />
+                  <input type="hidden" name="_subject" value="Yêu cầu đăng ký làm đại lý mới" />
 
-                <div class="mb-4">
-                  <label for="distributor-location" class="block text-gray-700 mb-2">Khu vực kinh doanh</label>
-                  <input type="text" id="distributor-location" name="Khu vực kinh doanh"
-                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
-                    required />
+                  <div class="mb-4">
+                    <label for="distributor-name" class="block text-gray-700 mb-2">Họ và tên</label>
+                    <input type="text" id="distributor-name" name="Họ và tên"
+                      class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300"
+                      required aria-required="true" />
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="distributor-email" class="block text-gray-700 mb-2">Email</label>
+                    <input type="email" id="distributor-email" name="Email"
+                      class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300"
+                      required aria-required="true" />
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="distributor-phone" class="block text-gray-700 mb-2">Số điện thoại</label>
+                    <input type="tel" id="distributor-phone" name="Số điện thoại"
+                      class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300"
+                      required aria-required="true" />
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="distributor-location" class="block text-gray-700 mb-2">Khu vực kinh doanh</label>
+                    <input type="text" id="distributor-location" name="Khu vực kinh doanh"
+                      class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300"
+                      required aria-required="true" />
+                  </div>
+
+                  <button type="submit"
+                    class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-full transition-all duration-300 btn-shimmer">Đăng
+                    ký làm đại lý ngay</button>
+
+                  <p id="form-success-msg" class="mt-4 text-green-600 font-semibold hidden">✔️ Gửi thành công! Chúng tôi
+                    sẽ liên hệ sớm.</p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-primary-light" aria-labelledby="faq-heading">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 id="faq-heading" class="text-3xl font-bold mb-4 section-title">Câu hỏi thường gặp</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto section-description">Giải đáp những thắc mắc phổ
+            biến của khách hàng</p>
+        </div>
+        <div class="max-w-3xl mx-auto faq-container">
+          <div class="space-y-4">
+            <div class="border border-gray-200 rounded-lg overflow-hidden faq-item">
+              <button
+                class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition-colors duration-300"
+                aria-expanded="false" aria-controls="faq-content-1">
+                <span class="font-bold">Sản phẩm có đảm bảo không chứa chì và cadmium không? Có giấy chứng nhận
+                  không?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform duration-300" aria-hidden="true"></i>
+              </button>
+              <div id="faq-content-1"
+                class="faq-content max-h-0 overflow-hidden p-0 bg-white transition-all duration-500">
+                <div class="p-4">
+                  <p class="text-gray-600">Có. Bát đĩa KKT được sản xuất từ chất liệu Diaceram cao cấp, <strong>không
+                      giải
+                      phóng chì, cadmium hay formalin</strong>, đạt tiêu chuẩn kiểm định nghiêm ngặt tại Nhật Bản. Mỗi
+                    lô
+                    hàng đều có chứng từ CO/CQ rõ ràng, khách hàng có thể yêu cầu kiểm tra khi mua.</p>
                 </div>
+              </div>
+            </div>
+            <div class="border border-gray-200 rounded-lg overflow-hidden faq-item">
+              <button
+                class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition-colors duration-300"
+                aria-expanded="false" aria-controls="faq-content-2">
+                <span class="font-bold">Bát đĩa có dễ vỡ không nếu bé làm rơi?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform duration-300" aria-hidden="true"></i>
+              </button>
+              <div id="faq-content-2"
+                class="faq-content max-h-0 overflow-hidden p-0 bg-white transition-all duration-500">
+                <div class="p-4">
+                  <p class="text-gray-600">Không dễ vỡ. Sản phẩm chịu lực lên tới <strong>230MPa</strong>, cao gấp 3–4
+                    lần
+                    bát đĩa thông thường. Điều này giúp hạn chế tối đa nứt, vỡ trong quá trình sử dụng, đặc biệt phù hợp
+                    với
+                    trẻ nhỏ đang tập tự ăn.</p>
+                </div>
+              </div>
+            </div>
+            <div class="border border-gray-200 rounded-lg overflow-hidden faq-item">
+              <button
+                class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition-colors duration-300"
+                aria-expanded="false" aria-controls="faq-content-3">
+                <span class="font-bold">Hoa văn trên bát có bong tróc hoặc chứa chất độc hại không?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform duration-300" aria-hidden="true"></i>
+              </button>
+              <div id="faq-content-3"
+                class="faq-content max-h-0 overflow-hidden p-0 bg-white transition-all duration-500">
+                <div class="p-4">
+                  <p class="text-gray-600">Không. Hoa văn được áp dụng bằng công nghệ <strong>"inglaze"</strong> – nung
+                    ở
+                    nhiệt độ cao 1300°C giúp hình ảnh ngấm sâu vào lớp men, không bong – nung ở nhiệt độ cao 1300°C giúp
+                    hình ảnh ngấm sâu vào lớp men, không bong tróc, không lem màu, và <strong>không chứa mực in bề mặt
+                      gây
+                      hại cho sức khỏe</strong>.</p>
+                </div>
+              </div>
+            </div>
+            <div class="border border-gray-200 rounded-lg overflow-hidden faq-item">
+              <button
+                class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition-colors duration-300"
+                aria-expanded="false" aria-controls="faq-content-4">
+                <span class="font-bold">Có dùng được trong lò vi sóng, máy rửa bát và tiệt trùng bằng nước sôi
+                  không?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform duration-300" aria-hidden="true"></i>
+              </button>
+              <div id="faq-content-4"
+                class="faq-content max-h-0 overflow-hidden p-0 bg-white transition-all duration-500">
+                <div class="p-4">
+                  <p class="text-gray-600">Hoàn toàn có thể. Với khả năng <strong>chịu nhiệt đến 1000°C</strong>, bát
+                    đĩa
+                    KKT <strong>không bị nứt hay biến dạng</strong> khi dùng trong lò vi sóng, máy rửa bát, hoặc tiệt
+                    trùng
+                    bằng nước sôi.</p>
+                </div>
+              </div>
+            </div>
+            <div class="border border-gray-200 rounded-lg overflow-hidden faq-item">
+              <button
+                class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition-colors duration-300"
+                aria-expanded="false" aria-controls="faq-content-5">
+                <span class="font-bold">Bé tự ăn có dễ cầm không? Có chống trượt không?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform duration-300" aria-hidden="true"></i>
+              </button>
+              <div id="faq-content-5"
+                class="faq-content max-h-0 overflow-hidden p-0 bg-white transition-all duration-500">
+                <div class="p-4">
+                  <p class="text-gray-600">Có. Thiết kế <strong>đáy có rãnh ren chống trượt</strong>, giúp bé dễ dàng
+                    cầm
+                    nắm mà không bị trơn tay. Kích thước và hình dáng được tối ưu cho tay bé, hỗ trợ quá trình tập ăn
+                    độc
+                    lập.</p>
+                </div>
+              </div>
+            </div>
+            <div class="border border-gray-200 rounded-lg overflow-hidden faq-item">
+              <button
+                class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition-colors duration-300"
+                aria-expanded="false" aria-controls="faq-content-6">
+                <span class="font-bold">Bề mặt có dễ bị xước hoặc ố màu sau khi dùng lâu không?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform duration-300" aria-hidden="true"></i>
+              </button>
+              <div id="faq-content-6"
+                class="faq-content max-h-0 overflow-hidden p-0 bg-white transition-all duration-500">
+                <div class="p-4">
+                  <p class="text-gray-600">Không. Chất liệu Diaceram có <strong>độ trắng sáng tự nhiên</strong>, ít bám
+                    màu
+                    thực phẩm, không bị ố vàng, không ám mùi – giúp bát đĩa <strong>luôn sạch sẽ và dễ vệ sinh</strong>
+                    dù
+                    dùng lâu ngày.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-16 bg-white" aria-labelledby="testimonials-heading">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 id="testimonials-heading" class="text-3xl font-bold mb-4 section-title">Khách hàng nói gì về chúng tôi
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto section-description">Mỗi feedback đều là minh chứng cho sự an tâm
+            của cha mẹ khi chọn bát đĩa chuẩn Nhật cho bé.</p>
+        </div>
+        <div class="swiper py-8" id="testimonial-swiper">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="bg-white p-8 rounded-lg shadow-md testimonial-card">
+                <div class="flex text-yellow-400 mb-4" aria-label="Đánh giá 5 sao">
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                </div>
+                <p class="text-gray-600 mb-6">"Bé nhà mình từng làm rơi bát vài lần rồi nhưng chưa lần nào bị nứt vỡ.
+                  Mình
+                  rất thích chất sứ Diaceram này – vừa bền vừa nhẹ. Hoa văn cũng đẹp nữa, không bị tróc như mấy loại in
+                  nổi. Mỗi bữa ăn bé đều hào hứng hơn vì có 'bát con voi' của riêng mình."</p>
+                <div class="flex items-center">
+                  <img src="./Images/chi-linh.webp" alt="Ảnh anh Dũng" class="w-12 h-12 rounded-full mr-4" width="48"
+                    height="48" />
+                  <div>
+                    <h4 class="font-bold">Anh Dũng</h4>
+                    <p class="text-gray-500 text-sm">Bố bé Sushi (TP. HCM)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="bg-white p-8 rounded-lg shadow-md testimonial-card">
+                <div class="flex text-yellow-400 mb-4" aria-label="Đánh giá 5 sao">
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                </div>
+                <p class="text-gray-600 mb-6">""Lúc đầu mình hơi do dự vì giá cao hơn đồ nhựa thường, nhưng khi cầm trên
+                  tay thì đúng là khác biệt. Bát rất chắc tay, đáy có ren giúp con mình (gần 3 tuổi) cầm không bị trượt.
+                  Đặc biệt là mình thấy yên tâm vì sản phẩm không chứa chì hay hóa chất độc hại. Dùng máy rửa bát cũng
+                  không vấn đề gì cả."</p>
+                <div class="flex items-center">
+                  <img src="./Images/chi-huong.jpg" alt="Ảnh chị Phương Anh" class="w-12 h-12 rounded-full mr-4"
+                    width="48" height="48" />
+                  <div>
+                    <h4 class="font-bold">Chị Phương Anh</h4>
+                    <p class="text-gray-500 text-sm">Mẹ bé Bông (Hà Nội)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="bg-white p-8 rounded-lg shadow-md testimonial-card">
+                <div class="flex text-yellow-400 mb-4" aria-label="Đánh giá 4.5 sao">
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star-half-alt" aria-hidden="true"></i>
+                </div>
+                <p class="text-gray-600 mb-6">"Mình mua bộ này vì thấy được tư vấn kỹ lưỡng, và thật sự không thất vọng.
+                  Dùng 3 tháng rồi vẫn trắng sáng như mới, không hề bị bám màu dù cho ăn cà rốt hay nước mắm. Vệ sinh
+                  cũng
+                  rất dễ. Mẹ thì thích vì tiện, con thì thích vì đẹp – đáng tiền!"</p>
+                <div class="flex items-center">
+                  <img src="./Images/chi-mai.jpg" alt="Ảnh chị Thảo" class="w-12 h-12 rounded-full mr-4" width="48"
+                    height="48" />
+                  <div>
+                    <h4 class="font-bold">Chị Thảo</h4>
+                    <p class="text-gray-500 text-sm">Mẹ bé Ken (Đà Nẵng)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="bg-white p-8 rounded-lg shadow-md testimonial-card">
+                <div class="flex text-yellow-400 mb-4" aria-label="Đánh giá 4.5 sao">
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star-half-alt" aria-hidden="true"></i>
+                </div>
+                <p class="text-gray-600 mb-6">"Khi đặt mua mình được gửi đầy đủ giấy kiểm định sản phẩm, nên rất an tâm.
+                  Nhân viên tư vấn cũng cực kỳ nhiệt tình. Hàng giao tới đóng gói cẩn thận, không sứt mẻ gì cả. Đồ Nhật
+                  nội địa chính hãng có khác."</p>
+                <div class="flex items-center">
+                  <img src="./Images/chi-huyen-trang.jpg" alt="Ảnh chị Huyền Trang" class="w-12 h-12 rounded-full mr-4"
+                    width="48" height="48" />
+                  <div>
+                    <h4 class="font-bold">Chị Huyền Trang</h4>
+                    <p class="text-gray-500 text-sm">Mẹ bé Mio (Bắc Ninh)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-white" aria-labelledby="newsletter-heading">
+      <div class="container mx-auto px-4">
+        <div
+          class="bg-gradient-to-r from-primary-light to-white p-8 md:p-12 rounded-2xl shadow-lg newsletter-container">
+          <div class="flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-8 md:mb-0 newsletter-content">
+              <h2 id="newsletter-heading" class="text-3xl font-bold mb-4">Đăng ký review để nhận quà tặng miễn phí</h2>
+              <p class="text-gray-600">Số lượng quà tặng có hạn – đăng ký ngay hôm nay để không bỏ lỡ!</p>
+            </div>
+
+            <!-- Form Đăng ký nhận quà -->
+            <div class="md:w-1/2 newsletter-form">
+              <form id="gift-form" data-form data-success="gift-success" class="flex flex-col sm:flex-row gap-4 w-full">
+                <!-- Các trường ẩn dùng cho FormSubmit -->
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_subject" value="Đăng ký nhận quà tặng miễn phí">
+
+                <input type="email" name="Email đăng ký review nhận quà" placeholder="Email của bạn" required
+                  class="flex-grow px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300"
+                  aria-label="Email đăng ký nhận quà" aria-required="true" />
 
                 <button type="submit"
-                  class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-full transition">Đăng
-                  ký làm đại lý ngay</button>
-
-                <p id="form-success-msg" class="mt-4 text-green-600 font-semibold hidden">✔️ Gửi thành công! Chúng tôi
-                  sẽ liên hệ sớm.</p>
+                  class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-full transition-all duration-300 btn-shimmer">Đăng
+                  ký</button>
               </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- FAQ Section -->
-  <section class="py-16 bg-primary-light">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold mb-4" data-aos="fade-up">Câu hỏi thường gặp</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Giải đáp những thắc mắc phổ
-          biến của khách hàng</p>
-      </div>
-      <div class="max-w-3xl mx-auto" data-aos="fade-up">
-        <div class="space-y-4">
-          <div class="border border-gray-200 rounded-lg overflow-hidden">
-            <button
-              class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition"
-              aria-expanded="false">
-              <span class="font-bold">Sản phẩm có đảm bảo không chứa chì và cadmium không? Có giấy chứng nhận
-                không?</span>
-              <i class="fas fa-chevron-down text-primary transition-transform"></i>
-            </button>
-            <div class="faq-content hidden p-4 bg-white">
-              <p class="text-gray-600">Có. Bát đĩa KKT được sản xuất từ chất liệu Diaceram cao cấp, <strong>không giải
-                  phóng chì, cadmium hay formalin</strong>, đạt tiêu chuẩn kiểm định nghiêm ngặt tại Nhật Bản. Mỗi lô
-                hàng đều có chứng từ CO/CQ rõ ràng, khách hàng có thể yêu cầu kiểm tra khi mua.</p>
-            </div>
-          </div>
-          <div class="border border-gray-200 rounded-lg overflow-hidden">
-            <button
-              class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition"
-              aria-expanded="false">
-              <span class="font-bold">Bát đĩa có dễ vỡ không nếu bé làm rơi?</span>
-              <i class="fas fa-chevron-down text-primary transition-transform"></i>
-            </button>
-            <div class="faq-content hidden p-4 bg-white">
-              <p class="text-gray-600">Không dễ vỡ. Sản phẩm chịu lực lên tới <strong>230MPa</strong>, cao gấp 3–4 lần
-                bát đĩa thông thường. Điều này giúp hạn chế tối đa nứt, vỡ trong quá trình sử dụng, đặc biệt phù hợp với
-                trẻ nhỏ đang tập tự ăn.</p>
-            </div>
-          </div>
-          <div class="border border-gray-200 rounded-lg overflow-hidden">
-            <button
-              class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition"
-              aria-expanded="false">
-              <span class="font-bold">Hoa văn trên bát có bong tróc hoặc chứa chất độc hại không?</span>
-              <i class="fas fa-chevron-down text-primary transition-transform"></i>
-            </button>
-            <div class="faq-content hidden p-4 bg-white">
-              <p class="text-gray-600">Không. Hoa văn được áp dụng bằng công nghệ <strong>"inglaze"</strong> – nung ở
-                nhiệt độ cao 1300°C giúp hình ảnh ngấm sâu vào lớp men, không bong – nung ở nhiệt độ cao 1300°C giúp
-                hình ảnh ngấm sâu vào lớp men, không bong tróc, không lem màu, và <strong>không chứa mực in bề mặt gây
-                  hại cho sức khỏe</strong>.</p>
-            </div>
-          </div>
-          <div class="border border-gray-200 rounded-lg overflow-hidden">
-            <button
-              class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition"
-              aria-expanded="false">
-              <span class="font-bold">Có dùng được trong lò vi sóng, máy rửa bát và tiệt trùng bằng nước sôi
-                không?</span>
-              <i class="fas fa-chevron-down text-primary transition-transform"></i>
-            </button>
-            <div class="faq-content hidden p-4 bg-white">
-              <p class="text-gray-600">Hoàn toàn có thể. Với khả năng <strong>chịu nhiệt đến 1000°C</strong>, bát đĩa
-                KKT <strong>không bị nứt hay biến dạng</strong> khi dùng trong lò vi sóng, máy rửa bát, hoặc tiệt trùng
-                bằng nước sôi.</p>
-            </div>
-          </div>
-          <div class="border border-gray-200 rounded-lg overflow-hidden">
-            <button
-              class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition"
-              aria-expanded="false">
-              <span class="font-bold">Bé tự ăn có dễ cầm không? Có chống trượt không?</span>
-              <i class="fas fa-chevron-down text-primary transition-transform"></i>
-            </button>
-            <div class="faq-content hidden p-4 bg-white">
-              <p class="text-gray-600">Có. Thiết kế <strong>đáy có rãnh ren chống trượt</strong>, giúp bé dễ dàng cầm
-                nắm mà không bị trơn tay. Kích thước và hình dáng được tối ưu cho tay bé, hỗ trợ quá trình tập ăn độc
-                lập.</p>
-            </div>
-          </div>
-          <div class="border border-gray-200 rounded-lg overflow-hidden">
-            <button
-              class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition"
-              aria-expanded="false">
-              <span class="font-bold">Bề mặt có dễ bị xước hoặc ố màu sau khi dùng lâu không?</span>
-              <i class="fas fa-chevron-down text-primary transition-transform"></i>
-            </button>
-            <div class="faq-content hidden p-4 bg-white">
-              <p class="text-gray-600">Không. Chất liệu Diaceram có <strong>độ trắng sáng tự nhiên</strong>, ít bám màu
-                thực phẩm, không bị ố vàng, không ám mùi – giúp bát đĩa <strong>luôn sạch sẽ và dễ vệ sinh</strong> dù
-                dùng lâu ngày.</p>
+              <p id="gift-success" class="mt-2 text-green-600 font-semibold hidden">🎁 Đăng ký thành công!</p>
             </div>
           </div>
         </div>
       </div>
-  </section>
-  <!-- Testimonials -->
-  <section id="testimonials" class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold mb-4" data-aos="fade-up">Khách hàng nói gì về chúng tôi</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Mỗi feedback đều là minh
-          chứng cho sự an tâm của cha mẹ khi chọn bát đĩa chuẩn Nhật cho bé.</p>
-      </div>
-      <div class="swiper" id="testimonial-swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide" data-aos="fade-up">
-            <div class="bg-white p-8 rounded-lg shadow-md">
-              <div class="flex text-yellow-400 mb-4">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+    </section>
+    <!-- Contact -->
+    <section id="contact" class="py-16 bg-primary-light" aria-labelledby="contact-heading">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 id="contact-heading" class="text-3xl font-bold mb-4 section-title">Liên hệ với chúng tôi</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto section-description">Chúng tôi luôn sẵn sàng hỗ
+            trợ và giải đáp mọi thắc mắc của bạn</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white p-6 rounded-lg shadow-md text-center contact-card">
+            <div
+              class="bg-primary-light w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 contact-icon"
+              aria-hidden="true">
+              <i class="fas fa-map-marker-alt text-2xl text-primary"></i>
+            </div>
+            <h3 class="font-bold text-lg mb-2">Địa chỉ</h3>
+            <p class="text-gray-600">Tầng 4, Số 89 Linh Lang, Cống Vị, Ba Đình, Hà Nội</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md text-center contact-card">
+            <div
+              class="bg-primary-light w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 contact-icon"
+              aria-hidden="true">
+              <i class="fas fa-phone-alt text-2xl text-primary"></i>
+            </div>
+            <h3 class="font-bold text-lg mb-2">Điện thoại</h3>
+            <p class="text-gray-600">Hotline: <a href="tel:+0865961001"
+                class="hover:text-primary transition-colors duration-300">0865 961 001</a></p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md text-center contact-card">
+            <div
+              class="bg-primary-light w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 contact-icon"
+              aria-hidden="true">
+              <i class="fas fa-envelope text-2xl text-primary"></i>
+            </div>
+            <h3 class="font-bold text-lg mb-2">Email</h3>
+            <p class="text-gray-600"><a href="mailto:contact.wakimarket@gmail.com"
+                class="hover:text-primary transition-colors duration-300">contact.wakimarket@gmail.com</a></p>
+          </div>
+        </div>
+        <div class="mt-12 bg-white p-8 rounded-lg shadow-md contact-form-container">
+          <form id="contactForm" data-form data-success="contact-success-msg">
+            <!-- Trường ẩn dùng cho FormSubmit -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_subject" value="Liên hệ với chúng tôi">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label for="name" class="block text-gray-700 mb-2">Họ và tên</label>
+                <input type="text" id="name" name="Họ và tên" required aria-label="Họ và tên" aria-required="true"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300" />
               </div>
-              <p class="text-gray-600 mb-6">"Lúc đầu mình hơi do dự vì giá cao hơn đồ nhựa thường, nhưng khi cầm trên
-                tay thì đúng là khác biệt. Bát rất chắc tay, đáy có ren giúp con mình (gần 3 tuổi) cầm không bị trượt.
-                Đặc biệt là mình thấy yên tâm vì sản phẩm không chứa chì hay hóa chất độc hại. Dùng máy rửa bát cũng
-                không vấn đề gì cả."</p>
-              <div class="flex items-center">
-                <img src="./Images/chi-huong.jpg" alt="Ảnh chị Phương Anh" class="w-12 h-12 rounded-full mr-4" />
-                <div>
-                  <h4 class="font-bold">Chị Phương Anh</h4>
-                  <p class="text-gray-500 text-sm">Mẹ bé Bông (Hà Nội)</p>
-                </div>
+              <div>
+                <label for="email" class="block text-gray-700 mb-2">Email</label>
+                <input type="email" id="email" name="Email" required aria-label="Email" aria-required="true"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300" />
+              </div>
+              <div>
+                <label for="phone" class="block text-gray-700 mb-2">Số điện thoại</label>
+                <input type="tel" id="phone" name="Số điện thoại" aria-label="Số điện thoại"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300" />
+              </div>
+              <div>
+                <label for="subject" class="block text-gray-700 mb-2">Chủ đề</label>
+                <input type="text" id="subject" name="Chủ đề" required aria-label="Chủ đề liên hệ" aria-required="true"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300" />
               </div>
             </div>
-          </div>
-          <div class="swiper-slide" data-aos="fade-up" data-aos-delay="100">
-            <div class="bg-white p-8 rounded-lg shadow-md">
-              <div class="flex text-yellow-400 mb-4">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <p class="text-gray-600 mb-6">"Bé nhà mình từng làm rơi bát vài lần rồi nhưng chưa lần nào bị nứt vỡ. Mình
-                rất thích chất sứ Diaceram này – vừa bền vừa nhẹ. Hoa văn cũng đẹp nữa, không bị tróc như mấy loại in
-                nổi. Mỗi bữa ăn bé đều hào hứng hơn vì có 'bát con voi' của riêng mình."</p>
-              <div class="flex items-center">
-                <img src="./Images/chi-linh.webp" alt="Ảnh anh Dũng" class="w-12 h-12 rounded-full mr-4" />
-                <div>
-                  <h4 class="font-bold">Anh Dũng</h4>
-                  <p class="text-gray-500 text-sm">Bố bé Sushi (TP. HCM)</p>
-                </div>
-              </div>
+
+            <div class="mb-6">
+              <label for="message" class="block text-gray-700 mb-2">Nội dung</label>
+              <textarea id="message" name="Nội dung" rows="5" required aria-label="Nội dung tin nhắn"
+                aria-required="true"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300"></textarea>
             </div>
-          </div>
-          <div class="swiper-slide" data-aos="fade-up" data-aos-delay="200">
-            <div class="bg-white p-8 rounded-lg shadow-md">
-              <div class="flex text-yellow-400 mb-4">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-              </div>
-              <p class="text-gray-600 mb-6">"Mình mua bộ này vì thấy được tư vấn kỹ lưỡng, và thật sự không thất vọng.
-                Dùng 3 tháng rồi vẫn trắng sáng như mới, không hề bị bám màu dù cho ăn cà rốt hay nước mắm. Vệ sinh cũng
-                rất dễ. Mẹ thì thích vì tiện, con thì thích vì đẹp – đáng tiền!"</p>
-              <div class="flex items-center">
-                <img src="./Images/chi-mai.jpg" alt="Ảnh chị Thảo" class="w-12 h-12 rounded-full mr-4" />
-                <div>
-                  <h4 class="font-bold">Chị Thảo</h4>
-                  <p class="text-gray-500 text-sm">Mẹ bé Ken (Đà Nẵng)</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide" data-aos="fade-up" data-aos-delay="300">
-            <div class="bg-white p-8 rounded-lg shadow-md">
-              <div class="flex text-yellow-400 mb-4">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-              </div>
-              <p class="text-gray-600 mb-6">"Khi đặt mua mình được gửi đầy đủ giấy kiểm định sản phẩm, nên rất an tâm.
-                Nhân viên tư vấn cũng cực kỳ nhiệt tình. Hàng giao tới đóng gói cẩn thận, không sứt mẻ gì cả. Đồ Nhật
-                nội địa chính hãng có khác."</p>
-              <div class="flex items-center">
-                <img src="./Images/chi-mai.jpg" alt="Ảnh chị Huyền Trang" class="w-12 h-12 rounded-full mr-4" />
-                <div>
-                  <h4 class="font-bold">Chị Huyền Trang</h4>
-                  <p class="text-gray-500 text-sm">Mẹ bé Mio (Bắc Ninh)</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
-    </div>
-  </section>
-  <!-- Newsletter -->
-  <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="bg-gradient-to-r from-primary-light to-white p-8 md:p-12 rounded-2xl shadow-lg">
-        <div class="flex flex-col md:flex-row items-center justify-between">
-          <div class="md:w-1/2 mb-8 md:mb-0" data-aos="fade-right">
-            <h2 class="text-3xl font-bold mb-4">Đăng ký review để nhận quà tặng miễn phí</h2>
-            <p class="text-gray-600">Số lượng quà tặng có hạn – đăng ký ngay hôm nay để không bỏ lỡ!</p>
-          </div>
 
-          <!-- Form Đăng ký nhận quà -->
-          <div class="md:w-1/2" data-aos="fade-left">
-            <form id="gift-form" data-form data-success="gift-success" class="flex flex-col sm:flex-row gap-4 w-full">
-              <!-- Các trường ẩn dùng cho FormSubmit -->
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="_subject" value="Đăng ký nhận quà tặng miễn phí">
+            <div class="flex justify-center"> <button type="submit"
+                class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-full transition-all duration-300 btn-shimmer">
+                Gửi tin nhắn
+              </button></div>
 
-              <input type="email" name="Email đăng ký review nhận quà" placeholder="Email của bạn" required
-                class="flex-grow px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary" />
+          </form>
 
-              <button type="submit"
-                class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-full transition">Đăng
-                ký</button>
-            </form>
-
-            <p id="gift-success" class="mt-2 text-green-600 font-semibold hidden">🎁 Đăng ký thành công!</p>
-          </div>
+          <!-- Thông báo thành công -->
+          <p id="contact-success-msg" class="hidden text-green-600 mt-4 font-semibold">
+            ✔️ Gửi thành công! Chúng tôi sẽ liên hệ bạn sớm.
+          </p>
         </div>
       </div>
-    </div>
-  </section>
-  <!-- Contact -->
-  <section id="contact" class="py-16 bg-primary-light">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold mb-4" data-aos="fade-up">Liên hệ với chúng tôi</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Chúng tôi luôn sẵn sàng hỗ
-          trợ và giải đáp mọi thắc mắc của bạn</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow-md text-center" data-aos="fade-up">
-          <div class="bg-primary-light w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-map-marker-alt text-2xl text-primary"></i>
-          </div>
-          <h3 class="font-bold text-lg mb-2">Địa chỉ</h3>
-          <p class="text-gray-600">Tầng 4, Số 89 Linh Lang, Cống Vị, Ba Đình, Hà Nội</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md text-center" data-aos="fade-up" data-aos-delay="100">
-          <div class="bg-primary-light w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-phone-alt text-2xl text-primary"></i>
-          </div>
-          <h3 class="font-bold text-lg mb-2">Điện thoại</h3>
-          <p class="text-gray-600">Hotline: <a href="tel:+0865961001">0865 961 001</a></p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md text-center" data-aos="fade-up" data-aos-delay="200">
-          <div class="bg-primary-light w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-envelope text-2xl text-primary"></i>
-          </div>
-          <h3 class="font-bold text-lg mb-2">Email</h3>
-          <p class="text-gray-600"><a href="mailto:contact.wakimarket@gmail.com">contact.wakimarket@gmail.com</a></p>
-        </div>
-      </div>
-      <div class="mt-12 bg-white p-8 rounded-lg shadow-md" data-aos="fade-up">
-        <form id="contactForm" data-form data-success="contact-success-msg">
-          <!-- Trường ẩn dùng cho FormSubmit -->
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_subject" value="Liên hệ với chúng tôi">
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div>
-              <label for="name" class="block text-gray-700 mb-2">Họ và tên</label>
-              <input type="text" id="name" name="Họ và tên" required aria-label="Họ và tên"
-                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary" />
+    </section>
+    <!-- Footer -->
+    <footer class="bg-white pt-16 pb-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          <div class="footer-info">
+            <div class="flex items-center space-x-4">
+              <a href="#" class="flex items-center" aria-label="KKT x Waki Market Home">
+                <img src="./Images/KKT 2.ai.png" alt="Logo KKT" class="w-20 h-20 object-contain" width="80"
+                  height="80" />
+                <img src="./Images/waki-market-logo.png" alt="Logo Waki Market" class="w-20 h-20 object-contain"
+                  width="80" height="80" />
+              </a>
             </div>
-            <div>
-              <label for="email" class="block text-gray-700 mb-2">Email</label>
-              <input type="email" id="email" name="Email" required aria-label="Email"
-                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary" />
-            </div>
-            <div>
-              <label for="phone" class="block text-gray-700 mb-2">Số điện thoại</label>
-              <input type="tel" id="phone" name="Số điện thoại" aria-label="Số điện thoại"
-                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary" />
-            </div>
-            <div>
-              <label for="subject" class="block text-gray-700 mb-2">Chủ đề</label>
-              <input type="text" id="subject" name="Chủ đề" required aria-label="Chủ đề liên hệ"
-                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary" />
+            <p class="text-gray-600 mb-4">Chăm con chuẩn Nhật với sản phẩm bát đĩa chất lượng cao đến từ Nhật Bản</p>
+            <div class="flex space-x-4">
+              <a href="#" aria-label="Facebook"
+                class="bg-primary-light hover:bg-primary text-primary hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300">
+                <i class="fab fa-facebook-f" aria-hidden="true"></i>
+              </a>
+              <a href="#" aria-label="Instagram"
+                class="bg-primary-light hover:bg-primary text-primary hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300">
+                <i class="fab fa-instagram" aria-hidden="true"></i>
+              </a>
+              <a href="#" aria-label="YouTube"
+                class="bg-primary-light hover:bg-primary text-primary hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300">
+                <i class="fab fa-youtube" aria-hidden="true"></i>
+              </a>
+              <a href="#" aria-label="TikTok"
+                class="bg-primary-light hover:bg-primary text-primary hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300">
+                <i class="fab fa-tiktok" aria-hidden="true"></i>
+              </a>
             </div>
           </div>
-
-          <div class="mb-6">
-            <label for="message" class="block text-gray-700 mb-2">Nội dung</label>
-            <textarea id="message" name="Nội dung" rows="5" required aria-label="Nội dung tin nhắn"
-              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+          <div class="footer-links">
+            <h3 class="font-bold text-lg mb-4">Danh mục sản phẩm</h3>
+            <ul class="space-y-2">
+              <li><a href="#"
+                  class="text-gray-600 hover:text-primary transition-colors duration-300 hover:translate-x-1 inline-block">Bộ
+                  sư tử</a></li>
+              <li><a href="#"
+                  class="text-gray-600 hover:text-primary transition-colors duration-300 hover:translate-x-1 inline-block">Bộ
+                  con voi</a></li>
+              <li><a href="#"
+                  class="text-gray-600 hover:text-primary transition-colors duration-300 hover:translate-x-1 inline-block">Bàn,
+                  Ghế</a></li>
+              <li><a href="#"
+                  class="text-gray-600 hover:text-primary transition-colors duration-300 hover:translate-x-1 inline-block">Kệ,
+                  Tủ</a></li>
+            </ul>
           </div>
-
-          <button type="submit"
-            class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-full transition">
-            Gửi tin nhắn
-          </button>
-        </form>
-
-        <!-- Thông báo thành công -->
-        <p id="contact-success-msg" class="hidden text-green-600 mt-4 font-semibold">
-          ✔️ Gửi thành công! Chúng tôi sẽ liên hệ bạn sớm.
-        </p>
-      </div>
-    </div>
-  </section>
-  <!-- Footer -->
-  <footer class="bg-white pt-16 pb-8">
-    <div class="container mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-        <div>
-          <div class="flex items-center space-x-4">
-            <a href="#" class="flex items-center">
-              <img src="./Images/kkt-logo.jpg" alt="Logo KKT" class="w-20 h-20 object-contain" />
-              <img src="./Images/waki-market-logo.png" alt="Logo Waki Market" class="w-20 h-20 object-contain" />
-            </a>
+          <div class="footer-links">
+            <h3 class="font-bold text-lg mb-4">Thông tin</h3>
+            <ul class="space-y-2">
+              <li><a href="#"
+                  class="text-gray-600 hover:text-primary transition-colors duration-300 hover:translate-x-1 inline-block">Về
+                  chúng tôi</a></li>
+              <li><a href="#"
+                  class="text-gray-600 hover:text-primary transition-colors duration-300 hover:translate-x-1 inline-block">Chính
+                  sách bảo mật</a></li>
+              <li><a href="#"
+                  class="text-gray-600 hover:text-primary transition-colors duration-300 hover:translate-x-1 inline-block">Điều
+                  khoản sử dụng</a></li>
+              <li><a href="#"
+                  class="text-gray-600 hover:text-primary transition-colors duration-300 hover:translate-x-1 inline-block">Chính
+                  sách đổi trả</a></li>
+              <li><a href="#"
+                  class="text-gray-600 hover:text-primary transition-colors duration-300 hover:translate-x-1 inline-block">Phương
+                  thức thanh toán</a></li>
+            </ul>
           </div>
-          <p class="text-gray-600 mb-4">Chăm con chuẩn Nhật với sản phẩm bát đĩa chất lượng cao đến từ Nhật Bản</p>
-          <div class="flex space-x-4">
-            <a href="#"
-              class="bg-primary-light hover:bg-primary text-primary hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#"
-              class="bg-primary-light hover:bg-primary text-primary hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#"
-              class="bg-primary-light hover:bg-primary text-primary hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition">
-              <i class="fab fa-youtube"></i>
-            </a>
-            <a href="#"
-              class="bg-primary-light hover:bg-primary text-primary hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition">
-              <i class="fab fa-tiktok"></i>
-            </a>
+          <div class="footer-contact">
+            <h3 class="font-bold text-lg mb-4">Liên hệ</h3>
+            <ul class="space-y-2">
+              <li class="flex items-start">
+                <i class="fas fa-map-marker-alt text-primary mt-1 mr-2" aria-hidden="true"></i>
+                <span class="text-gray-600">Tầng 4, Số 89 Linh Lang, Cống Vị, Ba Đình, Hà Nội</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-phone-alt text-primary mt-1 mr-2" aria-hidden="true"></i>
+                <span class="text-gray-600"><a href="tel:+0865961001"
+                    class="hover:text-primary transition-colors duration-300">0865 961 001</a></span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-envelope text-primary mt-1 mr-2" aria-hidden="true"></i>
+                <span class="text-gray-600"><a href="mailto:contact.wakimarket@gmail.com"
+                    class="hover:text-primary transition-colors duration-300">contact.wakimarket@gmail.com</a></span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-clock text-primary mt-1 mr-2" aria-hidden="true"></i>
+                <span class="text-gray-600">8:00 - 20:00, Thứ 2 - Chủ nhật</span>
+              </li>
+            </ul>
           </div>
         </div>
-        <div>
-          <h3 class="font-bold text-lg mb-4">Danh mục sản phẩm</h3>
-          <ul class="space-y-2">
-            <li><a href="#" class="text-gray-600 hover:text-primary">Bộ sư tử</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-primary">Bộ con voi</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-primary">Bàn, Ghế</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-primary">Kệ, Tủ</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-bold text-lg mb-4">Thông tin</h3>
-          <ul class="space-y-2">
-            <li><a href="#" class="text-gray-600 hover:text-primary">Về chúng tôi</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-primary">Chính sách bảo mật</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-primary">Điều khoản sử dụng</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-primary">Chính sách đổi trả</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-primary">Phương thức thanh toán</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-bold text-lg mb-4">Liên hệ</h3>
-          <ul class="space-y-2">
-            <li class="flex items-start">
-              <i class="fas fa-map-marker-alt text-primary mt-1 mr-2"></i>
-              <span class="text-gray-600">Tầng 4, Số 89 Linh Lang, Cống Vị, Ba Đình, Hà Nội</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-phone-alt text-primary mt-1 mr-2"></i>
-              <span class="text-gray-600"><a href="tel:+0865 961 001">0865 961 001</a></span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-envelope text-primary mt-1 mr-2"></i>
-              <span class="text-gray-600"><a
-                  href="mailto:contact.wakimarket@gmail.com">contact.wakimarket@gmail.com</a></span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-clock text-primary mt-1 mr-2"></i>
-              <span class="text-gray-600">8:00 - 20:00, Thứ 2 - Chủ nhật</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="border-t border-gray-200 pt-8">
-        <div class="flex flex-col md:flex-row justify-between items-center">
-          <p class="text-gray-600 mb-4 md:mb-0">© 2025 KKT x Waki Market. Design By <a
-              href="https://www.facebook.com/w.fourtech">W-Four Tech</a></p>
-          <div class="flex space-x-4">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/1200px-Visa_Inc._logo.svg.png"
-              alt="Visa" class="h-8" />
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1200px-Mastercard-logo.svg.png"
-              alt="Mastercard" class="h-8" />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png"
-              alt="PayPal" class="h-8" />
+        <div class="border-t border-gray-200 pt-8">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-600 mb-4 md:mb-0">© 2025 KKT x Waki Market. Design By <a
+                href="https://www.facebook.com/w.fourtech" rel="noopener noreferrer"
+                class="hover:text-primary transition-colors duration-300">W-Four Tech</a></p>
+            <div class="flex space-x-4">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/1200px-Visa_Inc._logo.svg.png"
+                alt="Visa" class="h-8" width="48" height="32" />
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1200px-Mastercard-logo.svg.png"
+                alt="Mastercard" class="h-8" width="48" height="32" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png"
+                alt="PayPal" class="h-8" width="48" height="32" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </footer>
-  <!-- Back to top button -->
-  <button id="back-to-top"
-    class="fixed bottom-6 right-6 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-  <!-- Chat Support Widget -->
-  <div class="fixed bottom-4 sm:bottom-6 left-4 sm:left-6 z-50">
-    <button id="chat-toggle"
-      class="bg-primary text-white w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-lg">
-      <i class="fas fa-comments text-xl sm:text-2xl"></i>
+    </footer>
+    <!-- Back to top button -->
+    <button id="back-to-top"
+      class="fixed bottom-6 right-6 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300"
+      aria-label="Lên đầu trang">
+      <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
-
-    <div id="chat-widget" class="hidden bg-white rounded-lg shadow-xl w-72 sm:w-80 h-auto overflow-hidden">
-      <div class="bg-primary text-white p-3 sm:p-4 flex justify-between items-center">
-        <div class="flex items-center">
-          <i class="fas fa-headset mr-2"></i>
-          <span class="font-bold text-sm sm:text-base">Hỗ trợ trực tuyến</span>
-        </div>
-        <button id="chat-close" class="text-white">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-
-      <div class="p-3 sm:p-4 h-56 sm:h-72 overflow-y-auto custom-scrollbar" id="chat-messages">
-        <!-- Các tin nhắn sẽ được append vào đây -->
-        <div class="flex mb-4">
-          <div class="w-8 h-8 rounded-full bg-primary-light flex items-center justify-center mr-2">
-            <i class="fas fa-user text-primary"></i>
-          </div>
-          <div class="bg-gray-100 rounded-lg p-2 sm:p-3 max-w-[80%]">
-            <p class="text-gray-700 text-xs sm:text-sm">Xin chào! Tôi có thể giúp gì cho bạn?</p>
-            <span class="text-xs text-gray-500">10:00</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="border-t border-gray-200 p-3 sm:p-4 flex">
-        <input type="text" id="chat-input" placeholder="Nhập tin nhắn..."
-          class="flex-grow px-3 sm:px-4 py-2 rounded-l-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary text-xs sm:text-sm" />
-        <button id="chat-send" class="bg-primary text-white px-3 sm:px-4 py-2 rounded-r-full">
-          <i class="fas fa-paper-plane text-xs sm:text-sm"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-  <!-- Popup Newsletter -->
-  <div id="popup-newsletter" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-    <div class="bg-white rounded-lg shadow-xl max-w-md w-full relative">
-      <button id="popup-close" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
-        <i class="fas fa-times"></i>
+    <!-- Chat Support Widget -->
+    <div class="fixed bottom-4 sm:bottom-6 left-4 sm:left-6 z-50">
+      <button id="chat-toggle"
+        class="bg-primary text-white w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-lg pulse"
+        aria-label="Mở hỗ trợ trực tuyến" aria-expanded="false" aria-controls="chat-widget">
+        <i class="fas fa-comments text-xl sm:text-2xl" aria-hidden="true"></i>
       </button>
-      <div class="p-6">
-        <div class="text-center mb-6">
-          <span class="text-3xl">👶</span>
-          <h3 class="text-2xl font-bold mb-2">Nhận ưu đãi đặc biệt</h3>
-          <p class="text-gray-600">Đăng ký nhận thông tin để nhận ưu đãi cho đơn hàng đầu tiên</p>
-        </div>
-        <form data-form="newsletter-form" data-success="success-message">
-          <input type="hidden" name="_blacklist" value="url"> <!-- Tắt URL nguồn -->
-          <div class="mb-4">
-            <input type="text" name="name" placeholder="Họ và tên" required
-              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary" />
+
+      <div id="chat-widget" class="hidden bg-white rounded-lg shadow-xl w-72 sm:w-80 h-auto overflow-hidden"
+        aria-labelledby="chat-title">
+        <div class="bg-primary text-white p-3 sm:p-4 flex justify-between items-center">
+          <div class="flex items-center">
+            <i class="fas fa-headset mr-2" aria-hidden="true"></i>
+            <span id="chat-title" class="font-bold text-sm sm:text-base">Hỗ trợ trực tuyến</span>
           </div>
-          <div class="mb-4">
-            <input type="email" name="email" placeholder="Email" required
-              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary" />
-          </div>
-          <button type="submit"
-            class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-full transition">
-            Đăng ký ngay
+          <button id="chat-close" class="text-white" aria-label="Đóng hỗ trợ trực tuyến">
+            <i class="fas fa-times" aria-hidden="true"></i>
           </button>
-        </form>
-        <div id="success-message" class="text-center mt-4 text-green-600 hidden">
-          Đăng ký thành công! Cảm ơn bạn!
         </div>
-        <div class="text-center mt-4">
-          <label class="flex items-center justify-center text-sm text-gray-600">
-            <input type="checkbox" class="mr-2" id="dont-show-again" />
-            Không hiển thị lại
-          </label>
+
+        <div class="p-3 sm:p-4 h-56 sm:h-72 overflow-y-auto custom-scrollbar" id="chat-messages" aria-live="polite">
+          <!-- Các tin nhắn sẽ được append vào đây -->
+          <div class="flex mb-4">
+            <div class="w-8 h-8 rounded-full bg-primary-light flex items-center justify-center mr-2" aria-hidden="true">
+              <i class="fas fa-user text-primary"></i>
+            </div>
+            <div class="bg-gray-100 rounded-lg p-2 sm:p-3 max-w-[80%]">
+              <p class="text-gray-700 text-xs sm:text-sm">Xin chào! Tôi có thể giúp gì cho bạn?</p>
+              <span class="text-xs text-gray-500">10:00</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-200 p-3 sm:p-4 flex">
+          <input type="text" id="chat-input" placeholder="Nhập tin nhắn..." aria-label="Nhập tin nhắn"
+            class="flex-grow px-3 sm:px-4 py-2 rounded-l-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary text-xs sm:text-sm transition-all duration-300" />
+          <button id="chat-send"
+            class="bg-primary text-white px-3 sm:px-4 py-2 rounded-r-full transition-all duration-300 hover:bg-primary-dark"
+            aria-label="Gửi tin nhắn">
+            <i class="fas fa-paper-plane text-xs sm:text-sm" aria-hidden="true"></i>
+          </button>
         </div>
       </div>
     </div>
-  </div>
-  <script>
-    // Initialize AOS
-    AOS.init({
-      duration: 800,
-      once: true,
-    });
-    // Mobile menu toggle
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenuClose = document.getElementById('mobile-menu-close');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-    function toggleMobileMenu() {
-      mobileMenu.classList.toggle('active');
-      mobileMenuOverlay.classList.toggle('active');
-    }
-    mobileMenuButton.addEventListener('click', toggleMobileMenu);
-    mobileMenuClose.addEventListener('click', toggleMobileMenu);
-    mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
-    // About section swiper
-    const aboutSwiper = new Swiper('.mySwiper', {
-      slidesPerView: 1,
-      spaceBetween: 16,
-      loop: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: true,
-      },
-      breakpoints: {
-        640: {
-          spaceBetween: 24,
-        },
-        768: {
-          spaceBetween: 32,
-        },
-        1024: {
-          spaceBetween: 40,
-        },
-      },
-    });
-    // Testimonial swiper
-    const testimonialSwiper = new Swiper('#testimonial-swiper', {
-      slidesPerView: 1,
-      spaceBetween: 20,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      breakpoints: {
-        768: {
-          slidesPerView: 3,
-        },
-      },
-    });
-    // Back to top button
-    const backToTopButton = document.getElementById('back-to-top');
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        backToTopButton.classList.remove('opacity-0', 'invisible');
-        backToTopButton.classList.add('opacity-100', 'visible');
-      } else {
-        backToTopButton.classList.remove('opacity-100', 'visible');
-        backToTopButton.classList.add('opacity-0', 'invisible');
-      }
-    });
-    backToTopButton.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
-    });
-    // FAQ toggles
-    const faqToggles = document.querySelectorAll('.faq-toggle');
-    faqToggles.forEach((toggle) => {
-      toggle.addEventListener('click', () => {
-        const content = toggle.nextElementSibling;
-        const icon = toggle.querySelector('i');
-        content.classList.toggle('hidden');
-        icon.classList.toggle('rotate-180');
-      });
-    });
-    // DOM elements
-    const chatToggle = document.getElementById('chat-toggle');
-    const chatWidget = document.getElementById('chat-widget');
-    const chatClose = document.getElementById('chat-close');
-    const chatMessages = document.getElementById('chat-messages');
-    const chatInput = document.getElementById('chat-input');
-    const chatSend = document.getElementById('chat-send');
+    <!-- Popup Newsletter -->
+    <div id="popup-newsletter" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"
+      aria-labelledby="popup-title" aria-modal="true" role="dialog">
+      <div class="bg-white rounded-lg shadow-xl max-w-md w-full relative popup-content">
+        <button id="popup-close"
+          class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 transition-colors duration-300"
+          aria-label="Đóng popup">
+          <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+        <div class="p-6">
+          <div class="text-center mb-6">
+            <span class="text-3xl float" aria-hidden="true">👶</span>
+            <h3 id="popup-title" class="text-2xl font-bold mb-2">Nhận ưu đãi đặc biệt</h3>
+            <p class="text-gray-600">Đăng ký nhận thông tin để nhận ưu đãi cho đơn hàng đầu tiên</p>
+          </div>
+          <form id="newsletter-form" data-form="newsletter-form" data-success="success-message">
+            <!-- Trường ẩn dùng cho FormSubmit -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_subject" value="Nhận ưu đãi đặc biệt">
+            <input type="hidden" name="_blacklist" value="url"> <!-- Tắt URL nguồn -->
+            <div class="mb-4">
+              <input type="text" name="Họ và tên" placeholder="Họ và tên" required aria-required="true"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300" />
+            </div>
+            <div class="mb-4">
+              <input type="tel" name="Số điện thoại" placeholder="Số điện thoại" required aria-required="true"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300" />
+            </div>
+            <div class="mb-4">
+              <input type="email" name="Email" placeholder="Email" required aria-required="true"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300" />
+            </div>
+            <button type="submit"
+              class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-full transition-all duration-300 btn-shimmer">
+              Đăng ký ngay
+            </button>
+          </form>
+          <div id="success-message" class="text-center mt-4 text-green-600 hidden">
+            Đăng ký thành công! Cảm ơn bạn!
+          </div>
+          <div class="text-center mt-4">
+            <label class="flex items-center justify-center text-sm text-gray-600">
+              <input type="checkbox" class="mr-2" id="dont-show-again" />
+              Không hiển thị lại
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    // Mở/đóng widget
-    chatToggle.addEventListener('click', () => {
-      chatWidget.classList.toggle('hidden');
-      if (!chatWidget.classList.contains('hidden')) {
-        chatInput.focus();
-      }
-    });
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Initialize GSAP
+        if (typeof gsap !== 'undefined') {
+          // Hero section animations
+          gsap.to('.hero-content h1', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' });
+          gsap.to('.hero-text', { opacity: 1, y: 0, duration: 0.8, delay: 0.3, ease: 'power3.out' });
+          gsap.to('.hero-buttons', { opacity: 1, y: 0, duration: 0.8, delay: 0.6, ease: 'power3.out' });
+          gsap.to('.hero-image', { opacity: 1, x: 0, duration: 0.8, delay: 0.4, ease: 'power3.out' });
 
-    chatClose.addEventListener('click', () => {
-      chatWidget.classList.add('hidden');
-    });
+          // Register ScrollTrigger
+          if (typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
 
-    // Gửi tin nhắn khi bấm nút hoặc Enter
-    chatSend.addEventListener('click', sendMessage);
-    chatInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        sendMessage();
-        e.preventDefault();
-      }
-    });
-
-    function sendMessage() {
-      const text = chatInput.value.trim();
-      if (!text) return;
-
-      // Tạo khung tin nhắn user
-      const wrapper = document.createElement('div');
-      wrapper.classList.add('flex', 'mb-4');
-
-      const avatar = document.createElement('div');
-      avatar.className = 'w-8 h-8 rounded-full bg-primary flex items-center justify-center mr-2';
-      avatar.innerHTML = '<i class="fas fa-user text-white"></i>';
-
-      const bubble = document.createElement('div');
-      bubble.className = 'bg-primary-light rounded-lg p-2 sm:p-3 max-w-[80%]';
-      bubble.innerHTML = `<p class="text-gray-800 text-xs sm:text-sm">${escapeHtml(text)}</p>
-                        <span class="text-xs text-gray-500">${getCurrentTime()}</span>`;
-
-      wrapper.appendChild(avatar);
-      wrapper.appendChild(bubble);
-      chatMessages.appendChild(wrapper);
-
-      chatInput.value = '';
-      scrollToBottom();
-
-      // TODO: Gửi text lên server hoặc xử lý bot ở đây
-    }
-
-    // Đảm bảo cuộn xuống dưới mỗi khi có tin nhắn mới
-    function scrollToBottom() {
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    // Lấy thời gian hiện tại định dạng HH:MM
-    function getCurrentTime() {
-      const now = new Date();
-      const h = now.getHours().toString().padStart(2, '0');
-      const m = now.getMinutes().toString().padStart(2, '0');
-      return `${h}:${m}`;
-    }
-
-    // Tránh XSS
-    function escapeHtml(str) {
-      return str.replace(/[&<>"']/g, (tag) => ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#39;'
-      }[tag]));
-    }
-    // Popup Newsletter
-    const popupNewsletter = document.getElementById('popup-newsletter');
-    const popupClose = document.getElementById('popup-close');
-    setTimeout(() => {
-      if (!localStorage.getItem('popup-closed')) {
-        popupNewsletter.classList.remove('hidden');
-      }
-    }, 5000);
-    popupClose.addEventListener('click', () => {
-      popupNewsletter.classList.add('hidden');
-      const checkbox = popupNewsletter.querySelector('input[type="checkbox"]');
-      if (checkbox.checked) {
-        localStorage.setItem('popup-closed', 'true');
-      }
-    });
-    
-
-    // Gửi email 
-    document.addEventListener("DOMContentLoaded", () => {
-      const forms = document.querySelectorAll("form[data-form]");
-
-      forms.forEach((form) => {
-        const successMsgId = form.getAttribute("data-success");
-        const successMsg = document.getElementById(successMsgId);
-
-        form.addEventListener("submit", async function (e) {
-          e.preventDefault();
-
-          const formData = new FormData(form);
-
-          try {
-            const res = await fetch("https://formsubmit.co/ajax/contact.wakimarket@gmail.com", {
-              method: "POST",
-              headers: {
-                'Accept': 'application/json'
-              },
-              body: formData
+            // Section titles animation
+            gsap.utils.toArray('.section-title').forEach(title => {
+              gsap.from(title, {
+                scrollTrigger: {
+                  trigger: title,
+                  start: 'top 80%',
+                  toggleActions: 'play none none none'
+                },
+                opacity: 0,
+                y: 30,
+                duration: 0.8,
+                ease: 'power3.out'
+              });
             });
 
-            if (res.ok) {
-              form.reset();
-              if (successMsg) successMsg.classList.remove("hidden");
-            } else {
-              alert("Đã xảy ra lỗi khi gửi. Vui lòng thử lại.");
+            // Section descriptions animation
+            gsap.utils.toArray('.section-description').forEach(desc => {
+              gsap.from(desc, {
+                scrollTrigger: {
+                  trigger: desc,
+                  start: 'top 80%',
+                  toggleActions: 'play none none none'
+                },
+                opacity: 0,
+                y: 20,
+                duration: 0.8,
+                delay: 0.2,
+                ease: 'power3.out'
+              });
+            });
+
+            // Feature cards animation
+            gsap.utils.toArray('.feature-card').forEach((card, index) => {
+              gsap.from(card, {
+                scrollTrigger: {
+                  trigger: card,
+                  start: 'top 80%',
+                  toggleActions: 'play none none none'
+                },
+                opacity: 0,
+                y: 50,
+                duration: 0.8,
+                delay: index * 0.2,
+                ease: 'power3.out'
+              });
+            });
+
+            // Blog cards animation
+            gsap.utils.toArray('.blog-card').forEach((card, index) => {
+              gsap.from(card, {
+                scrollTrigger: {
+                  trigger: card,
+                  start: 'top 80%',
+                  toggleActions: 'play none none none'
+                },
+                opacity: 0,
+                y: 50,
+                duration: 0.8,
+                delay: index * 0.2,
+                ease: 'power3.out'
+              });
+            });
+
+            // Contact cards animation
+            gsap.utils.toArray('.contact-card').forEach((card, index) => {
+              gsap.from(card, {
+                scrollTrigger: {
+                  trigger: card,
+                  start: 'top 80%',
+                  toggleActions: 'play none none none'
+                },
+                opacity: 0,
+                y: 30,
+                duration: 0.6,
+                delay: index * 0.15,
+                ease: 'power3.out'
+              });
+            });
+
+            // Parallax effect for background elements
+            gsap.utils.toArray('.parallax').forEach(element => {
+              gsap.to(element, {
+                scrollTrigger: {
+                  trigger: element,
+                  start: 'top bottom',
+                  end: 'bottom top',
+                  scrub: true
+                },
+                y: -100,
+                ease: 'none'
+              });
+            });
+          }
+        }
+
+        // Initialize AOS with improved settings
+        AOS.init({
+          duration: 800,
+          once: false,
+          mirror: true,
+          offset: 50,
+          easing: 'ease-in-out',
+          delay: 100,
+          disable: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        });
+
+        // Mobile menu toggle with improved animation
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+        function toggleMobileMenu() {
+          mobileMenu.classList.toggle('active');
+          mobileMenuOverlay.classList.toggle('active');
+
+          const isExpanded = mobileMenu.classList.contains('active');
+          mobileMenuButton.setAttribute('aria-expanded', isExpanded);
+
+          // Animate menu items when opened
+          if (isExpanded) {
+            const menuLinks = document.querySelectorAll('.mobile-nav-link');
+            menuLinks.forEach((link, index) => {
+              link.style.opacity = '0';
+              link.style.transform = 'translateX(-20px)';
+              setTimeout(() => {
+                link.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                link.style.opacity = '1';
+                link.style.transform = 'translateX(0)';
+              }, 100 + (index * 50));
+            });
+          }
+        }
+
+        mobileMenuButton.addEventListener('click', toggleMobileMenu);
+        mobileMenuClose.addEventListener('click', toggleMobileMenu);
+        mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
+
+        // Add hover effect to nav links
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+          link.addEventListener('mouseenter', () => {
+            link.style.transition = 'color 0.3s ease';
+            // Add a line under the link on hover
+            const line = document.createElement('span');
+            line.style.position = 'absolute';
+            line.style.bottom = '-2px';
+            line.style.left = '0';
+            line.style.width = '0';
+            line.style.height = '2px';
+            line.style.backgroundColor = 'var(--primary-color)';
+            line.style.transition = 'width 0.3s ease';
+            link.style.position = 'relative';
+            link.appendChild(line);
+            setTimeout(() => {
+              line.style.width = '100%';
+            }, 10);
+          });
+
+          link.addEventListener('mouseleave', () => {
+            const line = link.querySelector('span');
+            if (line) {
+              line.style.width = '0';
+              setTimeout(() => {
+                line.remove();
+              }, 300);
             }
-          } catch (err) {
-            alert("Không thể gửi. Vui lòng kiểm tra kết nối mạng.");
+          });
+        });
+
+        // About section swiper with enhanced animations
+        const aboutSwiper = new Swiper('.mySwiper', {
+          slidesPerView: 1,
+          spaceBetween: 16,
+          loop: true,
+          effect: 'fade',
+          fadeEffect: {
+            crossFade: true
+          },
+          speed: 800,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: true,
+            pauseOnMouseEnter: true
+          },
+          breakpoints: {
+            640: {
+              spaceBetween: 24,
+            },
+            768: {
+              spaceBetween: 32,
+            },
+            1024: {
+              spaceBetween: 40,
+            },
+          },
+          a11y: {
+            prevSlideMessage: 'Slide trước',
+            nextSlideMessage: 'Slide tiếp theo',
+            firstSlideMessage: 'Đây là slide đầu tiên',
+            lastSlideMessage: 'Đây là slide cuối cùng',
+            paginationBulletMessage: 'Đi đến slide {{index}}'
+          },
+          on: {
+            slideChangeTransitionStart: function () {
+              const activeSlide = this.slides[this.activeIndex];
+              const content = activeSlide.querySelector('.about-content');
+              const image = activeSlide.querySelector('.about-image');
+
+              if (content) {
+                content.style.opacity = '0';
+                content.style.transform = 'translateX(50px)';
+                setTimeout(() => {
+                  content.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                  content.style.opacity = '1';
+                  content.style.transform = 'translateX(0)';
+                }, 100);
+              }
+
+              if (image) {
+                image.style.opacity = '0';
+                image.style.transform = 'translateX(-50px)';
+                setTimeout(() => {
+                  image.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                  image.style.opacity = '1';
+                  image.style.transform = 'translateX(0)';
+                }, 100);
+              }
+            }
           }
         });
+
+        // Testimonial swiper with enhanced animations
+        const testimonialSwiper = new Swiper('#testimonial-swiper', {
+          slidesPerView: 1, // Mặc định là 1 slide (mobile)
+          spaceBetween: 20,
+          speed: 800,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          breakpoints: {
+            640: {
+              slidesPerView: 2, // iPad và tablet
+            },
+            1024: {
+              slidesPerView: 3, // PC
+            },
+          },
+          a11y: {
+            prevSlideMessage: 'Đánh giá trước',
+            nextSlideMessage: 'Đánh giá tiếp theo',
+            firstSlideMessage: 'Đây là đánh giá đầu tiên',
+            lastSlideMessage: 'Đây là đánh giá cuối cùng',
+            paginationBulletMessage: 'Đi đến đánh giá {{index}}'
+          },
+          on: {
+            slideChangeTransitionStart: function () {
+              const activeSlides = document.querySelectorAll('.swiper-slide-active, .swiper-slide-next, .swiper-slide-next + .swiper-slide');
+              activeSlides.forEach(slide => {
+                const card = slide.querySelector('.testimonial-card');
+                if (card) {
+                  card.style.transform = 'translateY(20px)';
+                  card.style.opacity = '0';
+                  setTimeout(() => {
+                    card.style.transition = 'transform 0.6s ease,  ease';
+                    card.style.transform = 'translateY(0)';
+                    card.style.opacity = '1';
+                  }, 100);
+                }
+              });
+            }
+          }
+        });
+
+        // Back to top button with enhanced animation
+        const backToTopButton = document.getElementById('back-to-top');
+
+        function toggleBackToTopButton() {
+          if (window.pageYOffset > 300) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+          } else {
+            backToTopButton.classList.remove('opacity-100', 'visible');
+            backToTopButton.classList.add('opacity-0', 'invisible');
+          }
+        }
+
+        window.addEventListener('scroll', toggleBackToTopButton);
+
+        backToTopButton.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+          });
+        });
+
+        // FAQ toggles with improved animation
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach((toggle, index) => {
+          const contentId = `faq-content-${index + 1}`;
+          const content = document.getElementById(contentId);
+
+          if (!content) return;
+
+          toggle.setAttribute('aria-controls', contentId);
+
+          toggle.addEventListener('click', () => {
+            const expanded = toggle.getAttribute('aria-expanded') === 'true';
+            toggle.setAttribute('aria-expanded', !expanded);
+
+            const icon = toggle.querySelector('i');
+
+            if (expanded) {
+              // Close the FAQ
+              content.classList.remove('active');
+              icon.style.transform = 'rotate(0deg)';
+              setTimeout(() => {
+                content.style.maxHeight = '0';
+                content.style.padding = '0';
+              }, 10);
+            } else {
+              // Open the FAQ
+              content.classList.add('active');
+              icon.style.transform = 'rotate(180deg)';
+              content.style.maxHeight = content.scrollHeight + 40 + 'px'; // Add padding
+              content.style.padding = '1rem';
+            }
+          });
+        });
+
+        // Chat widget with improved animations
+        const chatToggle = document.getElementById('chat-toggle');
+        const chatWidget = document.getElementById('chat-widget');
+        const chatClose = document.getElementById('chat-close');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const chatSend = document.getElementById('chat-send');
+
+        // Mở/đóng widget
+        chatToggle.addEventListener('click', () => {
+          const isHidden = chatWidget.classList.contains('hidden');
+
+          if (isHidden) {
+            chatWidget.classList.remove('hidden');
+            setTimeout(() => {
+              chatWidget.classList.add('active');
+              chatToggle.setAttribute('aria-expanded', 'true');
+              chatToggle.classList.remove('pulse');
+              chatInput.focus();
+            }, 10);
+          } else {
+            chatWidget.classList.remove('active');
+            chatToggle.setAttribute('aria-expanded', 'false');
+            setTimeout(() => {
+              chatWidget.classList.add('hidden');
+            }, 400); // Match the transition duration
+          }
+        });
+
+        chatClose.addEventListener('click', () => {
+          chatWidget.classList.remove('active');
+          chatToggle.setAttribute('aria-expanded', 'false');
+          setTimeout(() => {
+            chatWidget.classList.add('hidden');
+          }, 400); // Match the transition duration
+        });
+
+        // Gửi tin nhắn khi bấm nút hoặc Enter
+        chatSend.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            sendMessage();
+            e.preventDefault();
+          }
+        });
+
+        function sendMessage() {
+          const text = chatInput.value.trim();
+          if (!text) return;
+
+          // Tạo khung tin nhắn user
+          const wrapper = document.createElement('div');
+          wrapper.classList.add('flex', 'mb-4');
+          wrapper.style.opacity = '0';
+          wrapper.style.transform = 'translateY(20px)';
+
+          const avatar = document.createElement('div');
+          avatar.className = 'w-8 h-8 rounded-full bg-primary flex items-center justify-center mr-2';
+          avatar.setAttribute('aria-hidden', 'true');
+          avatar.innerHTML = '<i class="fas fa-user text-white"></i>';
+
+          const bubble = document.createElement('div');
+          bubble.className = 'bg-primary-light rounded-lg p-2 sm:p-3 max-w-[80%]';
+          bubble.innerHTML = `<p class="text-gray-800 text-xs sm:text-sm">${escapeHtml(text)}</p>
+                        <span class="text-xs text-gray-500">${getCurrentTime()}</span>`;
+
+          wrapper.appendChild(avatar);
+          wrapper.appendChild(bubble);
+          chatMessages.appendChild(wrapper);
+
+          // Animate the message
+          setTimeout(() => {
+            wrapper.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            wrapper.style.opacity = '1';
+            wrapper.style.transform = 'translateY(0)';
+          }, 10);
+
+          chatInput.value = '';
+          scrollToBottom();
+
+          // Simulate response after a short delay
+          setTimeout(() => {
+            const responseWrapper = document.createElement('div');
+            responseWrapper.classList.add('flex', 'mb-4', 'justify-start');
+            responseWrapper.style.opacity = '0';
+            responseWrapper.style.transform = 'translateY(20px)';
+
+            const responseAvatar = document.createElement('div');
+            responseAvatar.className = 'w-8 h-8 rounded-full bg-primary-light flex items-center justify-center mr-2';
+            responseAvatar.setAttribute('aria-hidden', 'true');
+            responseAvatar.innerHTML = '<i class="fas fa-headset text-primary"></i>';
+
+            const responseBubble = document.createElement('div');
+            responseBubble.className = 'bg-gray-100 rounded-lg p-2 sm:p-3 max-w-[80%]';
+            responseBubble.innerHTML = `<p class="text-gray-700 text-xs sm:text-sm">Cảm ơn bạn đã liên hệ. Chúng tôi sẽ phản hồi sớm nhất có thể!</p>
+                          <span class="text-xs text-gray-500">${getCurrentTime()}</span>`;
+
+            responseWrapper.appendChild(responseAvatar);
+            responseWrapper.appendChild(responseBubble);
+            chatMessages.appendChild(responseWrapper);
+
+            // Animate the response
+            setTimeout(() => {
+              responseWrapper.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+              responseWrapper.style.opacity = '1';
+              responseWrapper.style.transform = 'translateY(0)';
+              scrollToBottom();
+            }, 10);
+          }, 1000);
+        }
+
+        // Đảm bảo cuộn xuống dưới mỗi khi có tin nhắn mới
+        function scrollToBottom() {
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Lấy thời gian hiện tại định dạng HH:MM
+        function getCurrentTime() {
+          const now = new Date();
+          const h = now.getHours().toString().padStart(2, '0');
+          const m = now.getMinutes().toString().padStart(2, '0');
+          return `${h}:${m}`;
+        }
+
+        // Tránh XSS
+        function escapeHtml(str) {
+          return str.replace(/[&<>"']/g, (tag) => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+          }[tag]));
+        }
+
+        // Popup Newsletter with improved animation
+        const popupNewsletter = document.getElementById('popup-newsletter');
+        const popupClose = document.getElementById('popup-close');
+
+        // Chỉ hiển thị popup nếu chưa đóng trước đó
+        if (!localStorage.getItem('popup-closed')) {
+          setTimeout(() => {
+            popupNewsletter.classList.remove('hidden');
+            setTimeout(() => {
+              popupNewsletter.classList.add('active');
+            }, 10);
+          }, 5000);
+        }
+
+        popupClose.addEventListener('click', () => {
+          popupNewsletter.classList.remove('active');
+          setTimeout(() => {
+            popupNewsletter.classList.add('hidden');
+          }, 500);
+
+          const checkbox = document.getElementById('dont-show-again');
+          if (checkbox && checkbox.checked) {
+            localStorage.setItem('popup-closed', 'true');
+          }
+        });
+
+        // Video iframe loading animation
+        const videoIframes = document.querySelectorAll('.video-iframe');
+        videoIframes.forEach(iframe => {
+          iframe.addEventListener('load', function () {
+            const placeholder = this.parentElement.querySelector('.video-placeholder');
+            if (placeholder) {
+              // Fade out placeholder
+              placeholder.style.transition = 'opacity 0.5s ease';
+              placeholder.style.opacity = '0';
+
+              // Fade in iframe
+              this.style.transition = 'opacity 0.5s ease';
+              this.style.opacity = '1';
+
+              // Remove placeholder after animation
+              setTimeout(() => {
+                placeholder.remove();
+              }, 500);
+            }
+          });
+        });
+
+        // Blog card hover effect
+        const blogCards = document.querySelectorAll('.blog-card');
+        blogCards.forEach(card => {
+          card.addEventListener('mouseenter', () => {
+            const image = card.querySelector('.blog-image');
+            if (image) {
+              image.style.transform = 'scale(1.1)';
+            }
+          });
+
+          card.addEventListener('mouseleave', () => {
+            const image = card.querySelector('.blog-image');
+            if (image) {
+              image.style.transform = 'scale(1)';
+            }
+          });
+        });
+
+        // Product Data Array
+        const products = [
+          {
+            name: "Bát trà sư tử",
+            image: "./Images/bat-tra-su-tu.jpg",
+            alt: "Bát trà sư tử",
+            description: "Chất liệu sứ cao cấp - An toàn cho bé",
+            price: "150.000đ",
+            rating: 5,
+            reviews: 8,
+            isNew: true,
+          },
+          {
+            name: "Bát ăn cơm sư tử",
+            image: "./Images/bat-an-com-su-tu.png",
+            alt: "Bát ăn cơm sư tử",
+            description: "Thiết kế chống trượt - Dễ cầm nắm",
+            price: "200.000đ",
+            rating: 4.5,
+            reviews: 6,
+            isNew: true,
+          },
+          {
+            name: "Đĩa trái cây sư tử",
+            image: "./Images/dia-trai-cay-su-tu.jpg",
+            alt: "Đĩa trái cây sư tử",
+            description: "Họa tiết dễ thương - Kích thích bé ăn ngon",
+            price: "157.000đ",
+            rating: 4.5,
+            reviews: 12,
+            isNew: false,
+          },
+          {
+            name: "Đĩa nhỏ sư tử",
+            image: "./Images/dia-nho-su-tu.png",
+            alt: "Đĩa nhỏ sư tử",
+            description: "Kích thước vừa phải - Phù hợp ăn dặm",
+            price: "135.000đ",
+            rating: 4,
+            reviews: 5,
+            isNew: true,
+          },
+          {
+            name: "Cốc nhỏ sư tử",
+            image: "./Images/coc-nho-su-tu.jpg",
+            alt: "Cốc nhỏ sư tử",
+            description: "Dễ cầm nắm - Không đổ tràn",
+            price: "153.000đ",
+            rating: 5,
+            reviews: 9,
+            isNew: false,
+          },
+          {
+            name: "Bát trà con voi",
+            image: "./Images/bat-tra-con-voi.jpg",
+            alt: "Bát trà con voi",
+            description: "Chất liệu sứ cao cấp - An toàn cho bé",
+            price: "150.000đ",
+            rating: 4.5,
+            reviews: 7,
+            isNew: true,
+          },
+          {
+            name: "Bát ăn cơm con voi",
+            image: "./Images/bat-an-com-con-voi.jpg",
+            alt: "Bát ăn cơm con voi",
+            description: "Thiết kế chống trượt - Dễ cầm nắm",
+            price: "200.000đ",
+            rating: 5,
+            reviews: 11,
+            isNew: false,
+          },
+          {
+            name: "Đĩa trái cây con voi",
+            image: "./Images/dia-trai-cay-con-voi.jpg",
+            alt: "Đĩa trái cây con voi",
+            description: "Họa tiết dễ thương - Kích thích bé ăn ngon",
+            price: "157.000đ",
+            rating: 4,
+            reviews: 4,
+            isNew: true,
+          },
+          {
+            name: "Đĩa nhỏ con voi",
+            image: "./Images/dia-nho-con-voi.jpg",
+            alt: "Đĩa nhỏ con voi",
+            description: "Kích thước vừa phải - Phù hợp ăn dặm",
+            price: "135.000đ",
+            rating: 5,
+            reviews: 10,
+            isNew: true,
+          },
+          {
+            name: "Cốc nhỏ con voi",
+            image: "./Images/coc-nho-con-voi.jpg",
+            alt: "Cốc nhỏ con voi",
+            description: "Dễ cầm nắm - Không đổ tràn",
+            price: "153.000đ",
+            rating: 5,
+            reviews: 8,
+            isNew: true,
+          },
+          {
+            name: "Kệ đựng đồ dùng cho nhà trẻ",
+            image: "./Images/ke-dung-do-dung-cho-nha-tre.png",
+            alt: "Kệ đựng đồ dùng cho nhà trẻ",
+            description: "Thiết kế tiện lợi - Tiết kiệm không gian",
+            price: "15.130.000đ",
+            rating: 5,
+            reviews: 15,
+            isNew: false,
+          },
+          {
+            name: "Tủ 1 khoang hai mặt cho phòng chăm sóc trẻ sơ sinh",
+            image: "./Images/tu-1-khoang-hai-mat-cho-phong-cham-soc-tre-so-sinh.png",
+            alt: "Tủ 1 khoang hai mặt cho phòng chăm sóc trẻ sơ sinh",
+            description: "Chất liệu an toàn - Dễ vệ sinh",
+            price: "18.570.000đ",
+            rating: 5,
+            reviews: 6,
+            isNew: false,
+          },
+          {
+            name: "Bàn ăn cơm",
+            image: "./Images/bat-an-com.png",
+            alt: "Bàn ăn cơm",
+            description: "Thiết kế chắc chắn - Phù hợp trẻ nhỏ",
+            price: "12.680.000đ",
+            rating: 5,
+            reviews: 9,
+            isNew: false,
+          },
+          {
+            name: "Giá treo quần áo",
+            image: "./Images/gia-treo-quan-ao.png",
+            alt: "Giá treo quần áo",
+            description: "Tiết kiệm không gian - Dễ lắp đặt",
+            price: "17.300.000đ",
+            rating: 4.5,
+            reviews: 7,
+            isNew: true,
+          },
+          {
+            name: "Ghế ngồi cho trẻ 3 tuổi",
+            image: "./Images/ghe-ngoi-cho-tre-3-tuoi.png",
+            alt: "Ghế ngồi cho trẻ 3 tuổi",
+            description: "Thoải mái - Hỗ trợ tư thế ngồi",
+            price: "3.070.000đ",
+            rating: 5,
+            reviews: 12,
+            isNew: false,
+          },
+        ];
+
+        // Function to Render Rating Stars
+        function renderStars(rating) {
+          const fullStars = Math.floor(rating);
+          const halfStar = rating % 1 !== 0;
+          let stars = '';
+          for (let i = 0; i < fullStars; i++) {
+            stars += '<i class="fas fa-star" aria-hidden="true"></i>';
+          }
+          if (halfStar) {
+            stars += '<i class="fas fa-star-half-alt" aria-hidden="true"></i>';
+          }
+          for (let i = fullStars + (halfStar ? 1 : 0); i < 5; i++) {
+            stars += '<i class="far fa-star" aria-hidden="true"></i>';
+          }
+          return stars;
+        }
+
+        // Render Products with animation
+        const productGrid = document.getElementById('product-grid');
+        products.forEach((product, index) => {
+          const productCard = document.createElement('article');
+          productCard.className = 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-500 product-card';
+          productCard.style.opacity = '0';
+          productCard.style.transform = 'translateY(30px)';
+
+          productCard.innerHTML = `
+      ${product.isNew ? '<div class="absolute top-3 right-3 z-10"><span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</span></div>' : ''}
+      <div class="bg-gray-100 p-4 flex items-center justify-center h-56 overflow-hidden">
+        <img src="${product.image}" alt="${product.alt}" class="h-full w-full object-contain product-image transition-transform duration-500" width="200" height="200" loading="lazy" />
+      </div>
+      <div class="p-4">
+        <div class="flex text-yellow-400 mb-2" aria-label="Đánh giá ${product.rating} sao">
+          ${renderStars(product.rating)}
+          <span class="text-gray-500 ml-1 text-sm">(${product.reviews})</span>
+        </div>
+        <h3 class="font-bold text-lg mb-1">${product.name}</h3>
+        <p class="text-gray-600 text-sm mb-3">${product.description}</p>
+        <div class="flex justify-between items-center">
+          <p class="text-primary font-semibold">${product.price}</p>
+          <a href="#contact" aria-label="Thêm vào giỏ hàng - ${product.name}">
+            <button class="bg-primary hover:bg-primary-dark text-white rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 add-to-cart" aria-label="Thêm vào giỏ hàng">
+              <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+            </button>
+          </a>
+        </div>
+      </div>
+    `;
+
+          productGrid.appendChild(productCard);
+
+          // Staggered animation for product cards
+          setTimeout(() => {
+            productCard.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            productCard.style.opacity = '1';
+            productCard.style.transform = 'translateY(0)';
+          }, 100 + (index * 100));
+        });
+
+        // Animate policy items
+        const policyItems = document.querySelectorAll('.policy-item');
+        policyItems.forEach((item, index) => {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(20px)';
+
+          setTimeout(() => {
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+          }, 300 + (index * 150));
+
+          // Add hover effect to policy icons
+          const icon = item.querySelector('.policy-icon');
+          if (icon) {
+            item.addEventListener('mouseenter', () => {
+              icon.style.transition = 'transform 0.3s ease';
+              icon.style.transform = 'scale(1.2)';
+            });
+
+            item.addEventListener('mouseleave', () => {
+              icon.style.transform = 'scale(1)';
+            });
+          }
+        });
+
+        // Animate feature icons on hover
+        const featureCards = document.querySelectorAll('.feature-card');
+        featureCards.forEach(card => {
+          const icon = card.querySelector('.feature-icon');
+
+          card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-10px)';
+            if (icon) {
+              icon.style.transition = 'transform 0.5s ease';
+              icon.style.transform = 'rotateY(180deg)';
+            }
+          });
+
+          card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+            if (icon) {
+              icon.style.transform = 'rotateY(0)';
+            }
+          });
+        });
+
+        // Animate about features
+        const aboutFeatures = document.querySelectorAll('.about-feature');
+        aboutFeatures.forEach((feature, index) => {
+          feature.style.opacity = '0';
+          feature.style.transform = 'translateX(30px)';
+
+          // Use Intersection Observer to trigger animation when in view
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                setTimeout(() => {
+                  feature.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                  feature.style.opacity = '1';
+                  feature.style.transform = 'translateX(0)';
+                }, 300 + (index * 150));
+                observer.unobserve(feature);
+              }
+            });
+          }, { threshold: 0.3 });
+
+          observer.observe(feature);
+        });
+
+        // Xử lý gửi form với animation
+        const forms = document.querySelectorAll("form[data-form]");
+
+        forms.forEach((form) => {
+          const successMsgId = form.getAttribute("data-success");
+          const successMsg = document.getElementById(successMsgId);
+
+          // Add animation to form inputs
+          const inputs = form.querySelectorAll('input, textarea');
+          inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+              input.parentElement.classList.add('scale-105');
+              input.style.boxShadow = '0 0 0 3px rgba(0, 120, 168, 0.2)';
+            });
+
+            input.addEventListener('blur', () => {
+              input.parentElement.classList.remove('scale-105');
+              input.style.boxShadow = 'none';
+            });
+          });
+
+          form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            // Add loading state to submit button
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Đang gửi...';
+
+            const formData = new FormData(form);
+
+            try {
+              const res = await fetch("https://formsubmit.co/ajax/contact.wakimarket@gmail.com", {
+                method: "POST",
+                headers: {
+                  'Accept': 'application/json'
+                },
+                body: formData
+              });
+
+              const data = await res.json();
+
+              if (res.ok && data.success) {
+                form.reset();
+                if (successMsg) {
+                  successMsg.classList.remove("hidden");
+                  // Add fade-in animation
+                  successMsg.style.opacity = '0';
+                  successMsg.style.transform = 'translateY(10px)';
+                  setTimeout(() => {
+                    successMsg.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    successMsg.style.opacity = '1';
+                    successMsg.style.transform = 'translateY(0)';
+                  }, 10);
+
+                  // Thêm thuộc tính aria-live để thông báo cho người dùng screen reader
+                  successMsg.setAttribute('aria-live', 'polite');
+                }
+
+                // Đóng popup và lưu trạng thái để không hiển thị lại
+                if (form.id === 'newsletter-form') {
+                  setTimeout(() => {
+                    popupNewsletter.classList.remove("active");
+                    setTimeout(() => {
+                      popupNewsletter.classList.add("hidden");
+                    }, 500);
+                    localStorage.setItem("popup-closed", "true");
+                  }, 3000);
+                }
+              } else {
+                alert("Đã xảy ra lỗi khi gửi. Vui lòng thử lại.");
+              }
+            } catch (err) {
+              alert("Không thể gửi. Vui lòng kiểm tra kết nối mạng.");
+              console.error("Lỗi:", err);
+            } finally {
+              // Restore button state
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = originalText;
+            }
+          });
+        });
+
+        // Lazy load images with fade-in effect
+        const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+
+        if ('IntersectionObserver' in window) {
+          const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const img = entry.target;
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.5s ease';
+
+                // Start loading the image
+                const src = img.getAttribute('src');
+
+                // Create a new image to preload
+                const newImg = new Image();
+                newImg.src = src;
+
+                newImg.onload = () => {
+                  // Once loaded, fade it in
+                  img.style.opacity = '1';
+                };
+
+                // Stop observing the image
+                observer.unobserve(img);
+              }
+            });
+          });
+
+          lazyImages.forEach(img => {
+            img.style.opacity = '0';
+            imageObserver.observe(img);
+          });
+        }
+
+        // Add smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            if (this.getAttribute('href') === '#') return;
+
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+              // Close mobile menu if open
+              if (mobileMenu.classList.contains('active')) {
+                toggleMobileMenu();
+              }
+
+              // Smooth scroll to target
+              if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                // Respect user's preference for reduced motion
+                window.scrollTo(0, targetElement.offsetTop - 100);
+              } else {
+                window.scrollTo({
+                  top: targetElement.offsetTop - 100,
+                  behavior: 'smooth'
+                });
+              }
+
+              // Update URL hash
+              history.pushState(null, null, targetId);
+            }
+          });
+        });
       });
-    });
-  </script>
+    </script>
+  </div>
 </body>
 
 </html>
