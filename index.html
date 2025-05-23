@@ -1511,13 +1511,13 @@
                 class="hover:text-primary transition-colors duration-300">W-Four Tech</a></p>
             <div class="flex space-x-4">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/1200px-Visa_Inc._logo.svg.png"
-                alt="Visa" class="h-8" width="48" height="32" />
+                src="./Images/Visa_Inc._logo.svg.png"
+                alt="Visa" class="h-5" />
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1200px-Mastercard-logo.svg.png"
-                alt="Mastercard" class="h-8" width="48" height="32" />
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png"
-                alt="PayPal" class="h-8" width="48" height="32" />
+                src="./Images/Mastercard-logo.png"
+                alt="Mastercard" class="h-5" />
+              <img src="./Images/PayPal.svg.png"
+                alt="PayPal" class="h-5" />
             </div>
           </div>
         </div>
@@ -2361,8 +2361,8 @@
           productCard.style.transform = 'translateY(30px)';
 
           productCard.innerHTML = `
-      ${product.isNew ? '<div class="absolute top-3 right-3 z-10"><span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</span></div>' : ''}
-      <div class="bg-gray-100 p-4 flex items-center justify-center h-56 overflow-hidden">
+      ${product.isNew ? '<div class="absolute top-3 right-3 z-10"><span class="bg-green-500 text-white text-sm font-bold px-2 py-1 rounded">NEW</span></div>' : ''}
+      <div class="bg-primary-light p-4 flex items-center justify-center h-56 overflow-hidden">
         <img src="${product.image}" alt="${product.alt}" class="h-full w-full object-contain product-image transition-transform duration-500" width="200" height="200" loading="lazy" />
       </div>
       <div class="p-4">
