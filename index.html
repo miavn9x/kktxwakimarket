@@ -1504,9 +1504,12 @@
         </div>
         <div class="border-t border-gray-200 pt-8">
           <div class="flex flex-col md:flex-row justify-between items-center">
-            <p class="text-gray-600 mb-4 md:mb-0">© 2025 KKT x Waki Market. Design By <a
-                href="https://www.facebook.com/w.fourtech" rel="noopener noreferrer"
-                class="hover:text-primary transition-colors duration-300">W Four Tech</a></p>
+                <p class="text-gray-600 mb-4 md:mb-0">
+                  &copy; 2025 KKT x Waki Market. Design By
+                  <a id="wfour-link" class="text-alina-pale hover:text-alina-pink transition-colors" style="cursor:pointer;" rel="noopener noreferrer">
+                    W-FOUR TECH
+                  </a>
+                </p>
             <div class="flex space-x-4">
               <img
                 src="./Images/Visa_Inc._logo.svg.png"
@@ -1626,6 +1629,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
     <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const obfuscated = [119, 102, 111, 117, 114, 116, 101, 99, 104, 46, 118, 110]; 
+        const domain = obfuscated.map(c => String.fromCharCode(c)).join('');
+        const protocol = String.fromCharCode(104, 116, 116, 112, 115); // "https"
+        const fullUrl = protocol + '://' + domain + '/';
+
+        const link = document.getElementById('wfour-link');
+        link.addEventListener('click', () => {
+          window.open(fullUrl, '_blank');
+        });
+      });
+
       document.addEventListener('DOMContentLoaded', function () {
         // Initialize GSAP
         if (typeof gsap !== 'undefined') {
@@ -2124,7 +2139,7 @@
             setTimeout(() => {
               popupNewsletter.classList.add('active');
             }, 10);
-          }, 5000);
+          }, 0);
         }
 
         popupClose.addEventListener('click', () => {
